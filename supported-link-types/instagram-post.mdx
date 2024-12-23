@@ -1,0 +1,160 @@
+---
+title: Instagram Post
+description: "Details for the INSTAGRAM_POST link type"
+position: 12
+category: Supported Formats
+icon: 'instagram'
+---
+
+**Type Value:** `INSTAGRAM_POST`  
+**Status:** BETA
+
+An `INSTAGRAM_POST` link type represents a specific Instagram post. In addition to the standard preview attributes (`title`, `description`, `image`), `INSTAGRAM_POST` links provide rich data about the post content, media (images or videos), engagement metrics, and the authoring user. This makes it possible to integrate dynamic social media content directly into your application’s UI.
+
+## What It Includes
+
+When `type` is `INSTAGRAM_POST`, the response includes an `instagramPost` object with fields like:
+
+- **user:** Information about the user who created the post, including their username, display name, and profile image.
+- **publishedAt:** The date and time when the post was published.
+- **text (caption):** The post’s caption, which often includes hashtags, emojis, and user mentions.
+- **media:** An array of image or video objects representing the post’s media carousel. Each media item may have multiple resolutions available, making it easy to serve the appropriate size for different contexts.
+- **likesCount & commentsCount:** Engagement metrics that indicate the post’s popularity and audience interaction.
+
+Since this feature is in **BETA**, expect occasional refinements or enhancements. We’re continuously improving coverage and metadata to ensure you receive the best possible previews.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://www.instagram.com/p/C9ux69KPTyR/"}'
+```
+
+## Example Response
+
+```json
+{
+    "id": 529,
+    "ok": true,
+    "url": "https://www.instagram.com/p/C9ux69KPTyR/",
+    "domain": "instagram.com",
+    "type": "INSTAGRAM_POST",
+    "status": 200,
+    "updatedAt": "2024-12-16T14:27:07.591Z",
+    "size": 750205,
+    "redirected": false,
+    "title": "Post by Selena Gomez (@selenagomez)",
+    "description": "I can’t believe it’s been four years since we launched the Rare Impact Fund. To date the Rare Impact Fund has raised over $15 million for youth mental health, supporting 26 organizations across 5 c...",
+    "icon": {
+        "url": "https://cdn.peekalink.io/jr3o0146q89no22ds6fis6ss/1394/VsNE-OHk_8a.png",
+        "width": 32,
+        "height": 32,
+        "backgroundColor": "#000000"
+    },
+    "image": {
+        "thumbnail": {
+            "width": 192,
+            "height": 240,
+            "url": "https://cdn.peekalink.io/uein5bhz9kpev6a0x6n9xegx/1396/452381413_460334976919889_563436722918768163_n_thumbnail.jpeg"
+        },
+        "medium": {
+            "width": 384,
+            "height": 480,
+            "url": "https://cdn.peekalink.io/uein5bhz9kpev6a0x6n9xegx/1396/452381413_460334976919889_563436722918768163_n_medium.jpeg"
+        },
+        "large": {
+            "width": 768,
+            "height": 960,
+            "url": "https://cdn.peekalink.io/uein5bhz9kpev6a0x6n9xegx/1396/452381413_460334976919889_563436722918768163_n_large.jpeg"
+        },
+        "original": {
+            "width": 1080,
+            "height": 1350,
+            "url": "https://cdn.peekalink.io/uein5bhz9kpev6a0x6n9xegx/1396/452381413_460334976919889_563436722918768163_n_original.jpeg"
+        }
+    },
+    "instagramPost": {
+        "id": 3,
+        "publishedAt": "2024-07-22T16:01:48.000Z",
+        "likesCount": 5000000,
+        "commentsCount": 28,
+        "text": "I can’t believe it’s been four years since we launched the Rare Impact Fund. To date the Rare Impact Fund has raised over $15 million for youth mental health, supporting 26 organizations across 5 continents. All of this would not be possible without you! ​\n​\nBuilding the Rare Impact Fund has been my biggest wish. As always, for my birthday this year I would be so grateful if you were able to donate to the Rare Impact Fund. Please visit RareImpactFund.org to learn more and to donate. No amount is too small, and this is the biggest gift you could ever give me. Love you all!",
+        "user": {
+            "id": 2,
+            "username": "selenagomez",
+            "verified": true,
+            "name": "Selena Gomez",
+            "bio": "By grace, through faith. \nFounder @rarebeauty \nFounder/CIO @officialwondermind",
+            "url": "https://linktr.ee/selenagomez",
+            "followersCount": 423000000,
+            "followingCount": 330,
+            "postsCount": 2030,
+            "visibility": "PUBLIC",
+            "avatar": {
+                "thumbnail": {
+                    "width": 100,
+                    "height": 100,
+                    "url": "https://cdn.peekalink.io/e6pgdcxeaunn34vtvlzj2dfj/1299/428076736_1056279748962087_2851713635285337726_n.jpeg"
+                },
+                "medium": {
+                    "width": 100,
+                    "height": 100,
+                    "url": "https://cdn.peekalink.io/e6pgdcxeaunn34vtvlzj2dfj/1299/428076736_1056279748962087_2851713635285337726_n.jpeg"
+                },
+                "large": {
+                    "width": 100,
+                    "height": 100,
+                    "url": "https://cdn.peekalink.io/e6pgdcxeaunn34vtvlzj2dfj/1299/428076736_1056279748962087_2851713635285337726_n.jpeg"
+                },
+                "original": {
+                    "width": 100,
+                    "height": 100,
+                    "url": "https://cdn.peekalink.io/e6pgdcxeaunn34vtvlzj2dfj/1299/428076736_1056279748962087_2851713635285337726_n.jpeg"
+                }
+            }
+        },
+        "media": [
+            {
+                "width": 1080,
+                "height": 1350,
+                "size": 71139,
+                "format": "jpeg",
+                "hasAlphaChannel": false,
+                "thumbnail": {
+                    "width": 192,
+                    "height": 240,
+                    "url": "https://cdn.peekalink.io/uein5bhz9kpev6a0x6n9xegx/1396/452381413_460334976919889_563436722918768163_n_thumbnail.jpeg"
+                },
+                "medium": {
+                    "width": 384,
+                    "height": 480,
+                    "url": "https://cdn.peekalink.io/uein5bhz9kpev6a0x6n9xegx/1396/452381413_460334976919889_563436722918768163_n_medium.jpeg"
+                },
+                "large": {
+                    "width": 768,
+                    "height": 960,
+                    "url": "https://cdn.peekalink.io/uein5bhz9kpev6a0x6n9xegx/1396/452381413_460334976919889_563436722918768163_n_large.jpeg"
+                },
+                "original": {
+                    "width": 1080,
+                    "height": 1350,
+                    "url": "https://cdn.peekalink.io/uein5bhz9kpev6a0x6n9xegx/1396/452381413_460334976919889_563436722918768163_n_original.jpeg"
+                }
+            }
+        ]
+    },
+    "requestId": "cm4r4q4zp0001713cq018jom6"
+}
+```
+
+## Special Notes
+
+- **BETA Status:** Features and fields may evolve over time. Keep an eye on our Changelog for the latest updates.
+- **Fallback Strategies:** If certain metadata (like the user’s name or the caption) is unavailable, Peekalink attempts to infer meaningful defaults.
+- **Media Carousel:** Instagram posts often include multiple media items. Make use of the different image sizes to optimize loading times and display quality.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

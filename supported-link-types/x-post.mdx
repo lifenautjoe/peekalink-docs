@@ -1,0 +1,152 @@
+---
+title: X Post
+description: "Details for the X_POST link type (formerly Twitter)"
+position: 11
+category: Supported Formats
+icon: 'x'
+---
+
+**Type Value:** `X_POST`  
+**Status:** PRODUCTION
+
+An `X_POST` link type represents a specific post from X (formerly Twitter). In addition to the baseline preview attributes (`title`, `description`, `image`), `X_POST` links provide enriched data about the post content, timing, author, and engagement metrics. This makes it easier to integrate real-time social content into your application and display richer post previews.
+
+## What It Includes
+
+When `type` is `X_POST`, the response includes an `xPost` object with fields like:
+
+- **text:** The main textual content of the post.
+- **user:** Information about the author, including their username, display name, avatar, and other profile details.
+- **media:** An array of image or video objects (if available), allowing you to display embedded media directly.
+- **likesCount, commentsCount, viewsCount, bookmarksCount, repostsCount, quotesCount:** Engagement metrics that show how users interact with the post over time.
+- **createdAt, updatedAt, publishedAt:** Timestamps related to the post’s creation, last update, and publication times.
+
+These details let you surface not just the post content, but its context, popularity, and multimedia components.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://x.com/BarackObama/status/896523232098078720"}'
+```
+
+
+## Example Response
+
+```json
+{
+    "id": 568,
+    "ok": true,
+    "url": "https://x.com/BarackObama/status/896523232098078720",
+    "domain": "x.com",
+    "type": "X_POST",
+    "status": 200,
+    "updatedAt": "2024-12-16T14:22:31.287Z",
+    "size": 322314,
+    "redirected": false,
+    "title": "Barack Obama",
+    "description": "\"No one is born hating another person because of the color of his skin or his background or his religion...\"",
+    "icon": {
+        "url": "https://cdn.peekalink.io/q683xf7i54nwiu5h97n293gw/99/twitter.3.png",
+        "width": 32,
+        "height": 32,
+        "backgroundColor": "#000000"
+    },
+    "image": {
+        "thumbnail": {
+            "width": 320,
+            "height": 213,
+            "url": "https://cdn.peekalink.io/rno6nu909lqe0wmgevm7ceio/1392/DHEXH7RV0AAUwKj_thumbnail.jpeg"
+        },
+        "medium": {
+            "width": 640,
+            "height": 427,
+            "url": "https://cdn.peekalink.io/rno6nu909lqe0wmgevm7ceio/1392/DHEXH7RV0AAUwKj_medium.jpeg"
+        },
+        "large": {
+            "width": 1200,
+            "height": 800,
+            "url": "https://cdn.peekalink.io/rno6nu909lqe0wmgevm7ceio/1392/DHEXH7RV0AAUwKj_large.jpeg"
+        },
+        "original": {
+            "width": 1200,
+            "height": 800,
+            "url": "https://cdn.peekalink.io/rno6nu909lqe0wmgevm7ceio/1392/DHEXH7RV0AAUwKj_original.jpeg"
+        }
+    },
+    "xPost": {
+        "id": 4,
+        "createdAt": "2024-11-26T13:35:08.388Z",
+        "updatedAt": "2024-12-16T14:22:38.516Z",
+        "publishedAt": "2017-08-13T00:06:09.000Z",
+        "text": "\"No one is born hating another person because of the color of his skin or his background or his religion...\"",
+        "likesCount": 3619409,
+        "commentsCount": 60819,
+        "viewsCount": 1,
+        "bookmarksCount": 2400,
+        "repostsCount": 1300000,
+        "quotesCount": 58200,
+        "user": {
+            "id": 41,
+            "username": "BarackObama",
+            "name": "Barack Obama",
+            "followersCount": 130991436,
+            "followingCount": 522266,
+            "avatar": {
+                "thumbnail": {
+                    "width": 48,
+                    "height": 48,
+                    "url": "https://cdn.peekalink.io/r90rk7u27qy9ibii44rll5w1/1080/2SGvnHYV_normal.jpeg"
+                },
+                "medium": {
+                    "width": 48,
+                    "height": 48,
+                    "url": "https://cdn.peekalink.io/r90rk7u27qy9ibii44rll5w1/1080/2SGvnHYV_normal.jpeg"
+                },
+                "large": {
+                    "width": 48,
+                    "height": 48,
+                    "url": "https://cdn.peekalink.io/r90rk7u27qy9ibii44rll5w1/1080/2SGvnHYV_normal.jpeg"
+                },
+                "original": {
+                    "width": 48,
+                    "height": 48,
+                    "url": "https://cdn.peekalink.io/r90rk7u27qy9ibii44rll5w1/1080/2SGvnHYV_normal.jpeg"
+                }
+            }
+        },
+        "media": [
+            {
+                "width": 1200,
+                "height": 800,
+                "size": 94820,
+                "format": "jpeg",
+                "hasAlphaChannel": false,
+                "thumbnail": {
+                    "width": 320,
+                    "height": 213,
+                    "url": "https://cdn.peekalink.io/rno6nu909lqe0wmgevm7ceio/1392/DHEXH7RV0AAUwKj_thumbnail.jpeg"
+                },
+                "medium": {
+                    "width": 640,
+                    "height": 427,
+                    "url": "https://cdn.peekalink.io/rno6nu909lqe0wmgevm7ceio/1392/DHEXH7RV0AAUwKj_medium.jpeg"
+                },
+                "large": {
+                    "width": 1200,
+                    "height": 800,
+                    "url": "https://cdn.peekalink.io/rno6nu909lqe0wmgevm7ceio/1392/DHEXH7RV0AAUwKj_large.jpeg"
+                },
+                "original": {
+                    "width": 1200,
+                    "height": 800,
+                    "url": "https://cdn.peekalink.io/rno6nu909lqe0wmgevm7ceio/1392/DHEXH7RV0AAUwKj_original.jpeg"
+                }
+            }
+        ]
+    },
+    "requestId": "cm4r4k6ib00017nskdjgujf4k"
+}
+```

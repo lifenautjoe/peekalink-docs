@@ -1,0 +1,164 @@
+---
+title: GitHub Repository
+description: "Details for the GITHUB_REPOSITORY link type"
+position: 21
+category: Supported Formats
+icon: 'github'
+---
+
+**Type Value:** `GITHUB_REPOSITORY`  
+**Status:** PRODUCTION
+
+A `GITHUB_REPOSITORY` link type corresponds to a repository hosted on GitHub. Alongside standard preview attributes (`title`, `description`, `image`), `GITHUB_REPOSITORY` links provide a rich set of repository-specific data—such as star counts, forks, issues, contributors, and topics—making it easy to integrate open-source insights into your application.
+
+## What It Includes
+
+When `type` is `GITHUB_REPOSITORY`, the response includes a `githubRepository` object with fields like:
+
+- **name & description:** Identifies the repo and describes its purpose.
+- **owner:** Information about the repository owner (including username and avatar).
+- **starsCount, forksCount, watchersCount, contributorsCount:** Engagement metrics that reflect the repository’s popularity and community involvement.
+- **issuesCount, pullRequestsCount:** Indicators of project activity and ongoing development.
+- **commitsCount:** The size of the project’s commit history.
+- **languages & topics:** Technical classifications that reveal the repo’s language stack and thematic focus.
+- **lastCommitDate:** The timestamp of the most recent commit, showing how actively the project is maintained.
+
+These insights help users quickly assess a repository’s popularity, stability, technology stack, and level of community involvement.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://github.com/PostHog/posthog"}'
+```
+
+## Example Response
+
+```json
+{
+    "id": 355,
+    "ok": true,
+    "url": "https://github.com/PostHog/posthog",
+    "domain": "github.com",
+    "type": "GITHUB_REPOSITORY",
+    "status": 200,
+    "updatedAt": "2024-11-27T15:57:10.118Z",
+    "size": 757792,
+    "redirected": false,
+    "title": "PostHog/posthog",
+    "description": "🦔 PostHog provides open-source web & product analytics, session recording, feature flagging and A/B testing that you can self-host. Get started - free.",
+    "icon": {
+        "url": "https://cdn.peekalink.io/cwo9evr1w3mlbu7vbn29floc/1091/favicon_original.png",
+        "width": 2000,
+        "height": 2000,
+        "backgroundColor": "#FFFFFF"
+    },
+    "image": {
+        "thumbnail": {
+            "width": 320,
+            "height": 160,
+            "url": "https://cdn.peekalink.io/m6z7197ln3m89q0d64iac530/584/1e37b11e-1d35-44f5-a821-557f32278c26_thumbnail.png"
+        },
+        "medium": {
+            "width": 640,
+            "height": 320,
+            "url": "https://cdn.peekalink.io/m6z7197ln3m89q0d64iac530/584/1e37b11e-1d35-44f5-a821-557f32278c26_medium.png"
+        },
+        "large": {
+            "width": 1280,
+            "height": 641,
+            "url": "https://cdn.peekalink.io/m6z7197ln3m89q0d64iac530/584/1e37b11e-1d35-44f5-a821-557f32278c26_large.png"
+        },
+        "original": {
+            "width": 1282,
+            "height": 642,
+            "url": "https://cdn.peekalink.io/m6z7197ln3m89q0d64iac530/584/1e37b11e-1d35-44f5-a821-557f32278c26_original.png"
+        }
+    },
+    "githubRepository": {
+        "id": 1,
+        "name": "posthog",
+        "owner": {
+            "id": 1,
+            "username": "PostHog"
+        },
+        "description": "🦔 PostHog provides open-source web & product analytics, session recording, feature flagging and A/B testing that you can self-host. Get started - free.",
+        "starsCount": 22200,
+        "contributorsCount": 250,
+        "watchersCount": 104,
+        "commitsCount": 19608,
+        "forksCount": 1300,
+        "issuesCount": 1500,
+        "pullRequestsCount": 91,
+        "languages": [
+            {
+                "name": "Python",
+                "color": "#3572A5",
+                "percentage": 51.5
+            },
+            {
+                "name": "TypeScript",
+                "color": "#3178c6",
+                "percentage": 41.1
+            },
+            {
+                "name": "Rust",
+                "color": "#dea584",
+                "percentage": 3.3
+            },
+            {
+                "name": "C++",
+                "color": "#f34b7d",
+                "percentage": 1.8
+            },
+            {
+                "name": "JavaScript",
+                "color": "#f1e05a",
+                "percentage": 0.7
+            },
+            {
+                "name": "SCSS",
+                "color": "#c6538c",
+                "percentage": 0.7
+            },
+            {
+                "name": "Other",
+                "color": "#ededed",
+                "percentage": 0.9
+            }
+        ],
+        "topics": [
+            "react",
+            "javascript",
+            "python",
+            "typescript",
+            "analytics",
+            "web-analytics",
+            "feature-flags",
+            "data-warehouse",
+            "ab-testing",
+            "surveys",
+            "experiments",
+            "cdp",
+            "product-analytics",
+            "session-replay",
+            "ai-analytics"
+        ],
+        "lastCommitDate": "2024-11-27T15:56:47.000Z"
+    },
+    "requestId": "cm4r8u0kk0001dhelou0lhs75"
+}
+```
+
+
+## Special Notes
+
+- **Fallback Strategies:** If certain repo metadata is unavailable, Peekalink uses inference to maintain a useful preview.
+- **Community & Activity Signals:** Star counts, forks, and issues help users gauge project health and popularity.
+- **Language & Topics:** Use these fields to highlight the repo’s tech stack and thematic categories, aiding in content discovery.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

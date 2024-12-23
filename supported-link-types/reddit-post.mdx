@@ -1,0 +1,197 @@
+---
+title: Reddit Post
+description: "Details for the REDDIT_POST link type"
+position: 16
+category: Supported Formats
+icon: 'reddit'
+---
+
+**Type Value:** `REDDIT_POST`  
+**Status:** PRODUCTION
+
+A `REDDIT_POST` link type represents an individual post on Reddit. Beyond the baseline attributes (`title`, `description`, `image`), `REDDIT_POST` links provide details like the post’s author, the subreddit it belongs to, its content type (image, video, text, etc.), and engagement metrics such as upvotes and comments. This gives you the context needed to create more engaging previews of Reddit content within your application.
+
+## What It Includes
+
+When `type` is `REDDIT_POST`, the response includes a `redditPost` object with fields like:
+
+- **user:** Information about the author, including their username, avatar, and karma (if available).
+- **subreddit:** Data about the community where the post was published, such as its name, subscriber counts, and creation date.
+- **text:** The main textual content of the post (if it’s a text-based post).
+- **likesCount & commentsCount:** Engagement metrics showing how popular or controversial the post might be.
+- **type:** Indicates the post format (e.g., `IMAGE`, `VIDEO`, `TEXT`, `LINK`), helping you decide how to display or interact with the content.
+- **media:** An array of images or videos associated with the post, allowing you to embed multimedia content directly into your UI.
+
+This information lets you surface richer, more contextual previews of Reddit posts, making it easy for users to discover, understand, and engage with the content.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://www.reddit.com/r/programming/comments/abc123/check_out_this_cool_project/"}'
+```
+
+## Example Response
+
+```json
+{
+    "id": 296,
+    "ok": false,
+    "url": "https://www.reddit.com/r/Showcase_your_art/comments/14fym8q/had_alot_of_fun_painting_billy_zabka_happy_to/",
+    "domain": "reddit.com",
+    "type": "REDDIT_POST",
+    "status": 302,
+    "updatedAt": "2024-12-16T14:55:23.995Z",
+    "size": 831278,
+    "redirected": true,
+    "redirectionUrl": "https://www.reddit.com/r/Showcase_your_art/comments/14fym8q/had_alot_of_fun_painting_billy_zabka_happy_to/?rdt=38688",
+    "redirectionCount": 2,
+    "redirectionTrail": [
+        "https://www.reddit.com/r/Showcase_your_art/comments/14fym8q/had_alot_of_fun_painting_billy_zabka_happy_to/",
+        "https://www.reddit.com/r/Showcase_your_art/comments/14fym8q/had_alot_of_fun_painting_billy_zabka_happy_to/?rdt=38688"
+    ],
+    "title": "Post by u/First_Tadpole_5790 in r/Showcase_your_art",
+    "description": "Had alot of fun painting Billy Zabka! Happy to have gifted it to him! Cobra Kai never dies!",
+    "icon": {
+        "url": "https://cdn.peekalink.io/d7ss90zj4em6rbb4pomieg6f/346/76x76.png",
+        "width": 76,
+        "height": 76,
+        "backgroundColor": "#000000"
+    },
+    "image": {
+        "thumbnail": {
+            "width": 240,
+            "height": 240,
+            "url": "https://cdn.peekalink.io/sux69x6wk7010uycivwxsn54/1409/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-rxi234x2fj7b1_thumbnail.jpeg"
+        },
+        "medium": {
+            "width": 480,
+            "height": 480,
+            "url": "https://cdn.peekalink.io/sux69x6wk7010uycivwxsn54/1409/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-rxi234x2fj7b1_medium.jpeg"
+        },
+        "large": {
+            "width": 640,
+            "height": 640,
+            "url": "https://cdn.peekalink.io/sux69x6wk7010uycivwxsn54/1409/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-rxi234x2fj7b1_large.jpeg"
+        },
+        "original": {
+            "width": 640,
+            "height": 640,
+            "url": "https://cdn.peekalink.io/sux69x6wk7010uycivwxsn54/1409/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-rxi234x2fj7b1_original.jpeg"
+        }
+    },
+    "redditPost": {
+        "id": 3,
+        "xId": "14fym8q",
+        "createdAt": "2024-11-14T15:52:32.964Z",
+        "updatedAt": "2024-12-16T14:55:31.249Z",
+        "publishedAt": "1970-01-01T00:33:43.000Z",
+        "text": "Had alot of fun painting Billy Zabka! Happy to have gifted it to him! Cobra Kai never dies!",
+        "likesCount": 5,
+        "commentsCount": 1,
+        "type": "GALLERY",
+        "subreddit": {
+            "id": 12,
+            "name": "Showcase_your_art",
+            "title": "Showcase_your_art",
+            "activeUsersCount": 4,
+            "subscribersCount": 77,
+            "avatar": {
+                "thumbnail": {
+                    "width": 161,
+                    "height": 240,
+                    "url": "https://cdn.peekalink.io/wl4wokiwlbcuo6a4xhv79hp9/565/communityIcon_iexehu9oi7h61_thumbnail.jpeg"
+                },
+                "medium": {
+                    "width": 322,
+                    "height": 480,
+                    "url": "https://cdn.peekalink.io/wl4wokiwlbcuo6a4xhv79hp9/565/communityIcon_iexehu9oi7h61_medium.jpeg"
+                },
+                "large": {
+                    "width": 644,
+                    "height": 960,
+                    "url": "https://cdn.peekalink.io/wl4wokiwlbcuo6a4xhv79hp9/565/communityIcon_iexehu9oi7h61_large.jpeg"
+                },
+                "original": {
+                    "width": 1200,
+                    "height": 1788,
+                    "url": "https://cdn.peekalink.io/wl4wokiwlbcuo6a4xhv79hp9/565/communityIcon_iexehu9oi7h61_original.jpeg"
+                }
+            }
+        },
+        "user": {
+            "id": 23,
+            "username": "First_Tadpole_5790"
+        },
+        "media": [
+            {
+                "width": 640,
+                "height": 640,
+                "size": 57863,
+                "format": "jpeg",
+                "hasAlphaChannel": false,
+                "thumbnail": {
+                    "width": 240,
+                    "height": 240,
+                    "url": "https://cdn.peekalink.io/sux69x6wk7010uycivwxsn54/1409/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-rxi234x2fj7b1_thumbnail.jpeg"
+                },
+                "medium": {
+                    "width": 480,
+                    "height": 480,
+                    "url": "https://cdn.peekalink.io/sux69x6wk7010uycivwxsn54/1409/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-rxi234x2fj7b1_medium.jpeg"
+                },
+                "large": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://cdn.peekalink.io/sux69x6wk7010uycivwxsn54/1409/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-rxi234x2fj7b1_large.jpeg"
+                },
+                "original": {
+                    "width": 640,
+                    "height": 640,
+                    "url": "https://cdn.peekalink.io/sux69x6wk7010uycivwxsn54/1409/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-rxi234x2fj7b1_original.jpeg"
+                }
+            },
+            {
+                "width": 640,
+                "height": 666,
+                "size": 53575,
+                "format": "jpeg",
+                "hasAlphaChannel": false,
+                "thumbnail": {
+                    "width": 231,
+                    "height": 240,
+                    "url": "https://cdn.peekalink.io/d2r2arp0f4nc4whysuh0yp7o/1408/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-t9o8y633fj7b1_thumbnail.jpeg"
+                },
+                "medium": {
+                    "width": 461,
+                    "height": 480,
+                    "url": "https://cdn.peekalink.io/d2r2arp0f4nc4whysuh0yp7o/1408/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-t9o8y633fj7b1_medium.jpeg"
+                },
+                "large": {
+                    "width": 640,
+                    "height": 666,
+                    "url": "https://cdn.peekalink.io/d2r2arp0f4nc4whysuh0yp7o/1408/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-t9o8y633fj7b1_large.jpeg"
+                },
+                "original": {
+                    "width": 640,
+                    "height": 666,
+                    "url": "https://cdn.peekalink.io/d2r2arp0f4nc4whysuh0yp7o/1408/had-alot-of-fun-painting-billy-zabka-happy-to-have-gifted-v0-t9o8y633fj7b1_original.jpeg"
+                }
+            }
+        ]
+    },
+    "requestId": "cm4r5py76000110s114s6j3bp"
+}
+```
+
+## Special Notes
+
+- **Fallback Strategies:** If certain fields are missing, Peekalink infers defaults to maintain a consistent preview.
+- **Post Type & Media:** The type field and media array help you customize the display—showing text-only posts differently from image or video posts.
+- **Author & Subreddit Context:** Linking the post to both its author and subreddit offers a richer understanding of the content’s origin and community.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

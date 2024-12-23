@@ -1,0 +1,115 @@
+---
+title: Amazon Product
+description: "Details for the AMAZON_PRODUCT link type"
+position: 19
+category: Supported Formats
+icon: 'amazon'
+---
+
+**Type Value:** `AMAZON_PRODUCT`  
+**Status:** PRODUCTION
+
+An `AMAZON_PRODUCT` link type represents a product listing on Amazon. Along with the standard preview attributes (`title`, `description`, `image`), `AMAZON_PRODUCT` links deliver detailed product information—such as pricing, ratings, and key features—enabling you to create more compelling commerce integrations or product showcases.
+
+## What It Includes
+
+When `type` is `AMAZON_PRODUCT`, the response includes an `amazonProduct` object with fields like:
+
+- **productId:** The unique Amazon product identifier (ASIN).
+- **title & description:** Product name and a brief summary of its features.
+- **price & currency:** Up-to-date pricing information and the associated currency code.
+- **rating & reviewCount:** Indicators of product popularity and customer satisfaction.
+- **features:** A list of core product highlights or specifications.
+- **media:** An array of images offering various resolutions and formats, ideal for showcasing product visuals.
+
+By leveraging these details, you can display product previews that give users a quick, clear understanding of what’s being offered—supporting informed purchasing decisions or richer content integrations.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://www.amazon.com/Audio-Technica-ATH-M40x-Professional-Monitor-Headphones/dp/B00HVLUR54"}'
+```
+
+## Example Response
+
+```json
+{
+    "id": 502,
+    "ok": true,
+    "url": "https://www.amazon.com/Audio-Technica-ATHM40x-Professional-Monitor-Headphones/dp/B00HVLUR54",
+    "domain": "amazon.com",
+    "type": "PAGE",
+    "status": 200,
+    "updatedAt": "2024-11-27T17:06:55.037Z",
+    "size": 2574715,
+    "redirected": false,
+    "title": "Amazon.com: Audio-Technica ATH-M40x Professional Studio Monitor Headphone, Black, with Cutting Edge Engineering, 90 Degree Swiveling Earcups, Pro-grade Earpads/Headband, Detachable Cables Included : Audio-Technica: Electronics",
+    "description": "Buy Audio-Technica ATH-M40x Professional Studio Monitor Headphone, Black, with Cutting Edge Engineering, 90 Degree Swiveling Earcups, Pro-grade Earpads/Headband, Detachable Cables Included: Over-Ea...",
+    "image": {
+        "id": 1461,
+        "thumbnail": {
+            "url": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/screenshot_thumbnail.jpeg",
+            "width": 320,
+            "height": 180
+        },
+        "medium": {
+            "url": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/screenshot_medium.jpeg",
+            "width": 640,
+            "height": 360
+        },
+        "large": {
+            "url": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/screenshot_large.jpeg",
+            "width": 1280,
+            "height": 720
+        },
+        "original": {
+            "url": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/screenshot_original.jpeg",
+            "width": 1920,
+            "height": 1080
+        }
+    },
+    "page": {
+        "size": 2574715,
+        "estimatedReadingTimeInMinutes": 48,
+        "htmlUrl": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/link.html",
+        "markdownUrl": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/link.md",
+        "rawTextUrl": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/link.txt",
+        "screenshot": {
+            "thumbnail": {
+                "url": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/screenshot_thumbnail.jpeg",
+                "width": 320,
+                "height": 180
+            },
+            "medium": {
+                "url": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/screenshot_medium.jpeg",
+                "width": 640,
+                "height": 360
+            },
+            "large": {
+                "url": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/screenshot_large.jpeg",
+                "width": 1280,
+                "height": 720
+            },
+            "original": {
+                "url": "https://cdn.peekalink.io/aslizm6q5r6k9f39hzjzz0mm/1341/screenshot_original.jpeg",
+                "width": 1920,
+                "height": 1080
+            }
+        }
+    },
+    "requestId": "cm4r77z7g0003dh3npaihlahp"
+}
+```
+
+## Special Notes
+
+- **Fallback Strategies:** Peekalink infers missing metadata to maintain a cohesive preview, even if the product page lacks certain details.
+- **Price & Feature Highlights:** Use pricing, rating, and feature sets to help users quickly assess product suitability.
+- **Media Integration:** With multiple images and responsive assets, you can tailor the visual presentation to various screen sizes or design layouts.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

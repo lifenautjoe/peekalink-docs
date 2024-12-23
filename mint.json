@@ -7,12 +7,12 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#333333",
+    "light": "#FFFFFF",
+    "dark": "#000000",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#333333",
+      "to": "#FFFFFF"
     }
   },
   "topbarLinks": [
@@ -28,7 +28,8 @@
   "tabs": [
     {
       "name": "API Reference",
-      "url": "api-reference"
+      "url": "api-reference",
+      "openapi": "https://api.peekalink.io/mintlify"
     }
   ],
   "anchors": [
@@ -54,7 +55,34 @@
       "pages": [
         "introduction",
         "quickstart",
-        "development"
+        "support",
+        "faq"
+      ]
+    },
+    {
+      "group": "Supported Link Types",
+      "pages": [
+        "supported-link-types/overview",
+        "supported-link-types/page",
+        "supported-link-types/document",
+        "supported-link-types/text",
+        "supported-link-types/image",
+        "supported-link-types/video",
+        "supported-link-types/audio",
+        "supported-link-types/youtube-video",
+        "supported-link-types/youtube-user",
+        "supported-link-types/x-post",
+        "supported-link-types/x-user",
+        "supported-link-types/instagram-post",
+        "supported-link-types/instagram-user",
+        "supported-link-types/reddit-post",
+        "supported-link-types/reddit-user",
+        "supported-link-types/reddit-subreddit",
+        "supported-link-types/tiktok-video",
+        "supported-link-types/tiktok-user",
+        "supported-link-types/amazon-product",
+        "supported-link-types/etsy-product",
+        "supported-link-types/github-repository"
       ]
     },
     {
@@ -66,20 +94,6 @@
         "essentials/settings",
         "essentials/navigation",
         "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
       ]
     }
   ],

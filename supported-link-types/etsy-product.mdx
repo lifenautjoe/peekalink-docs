@@ -1,0 +1,120 @@
+---
+title: Etsy Product
+description: "Details for the ETSY_PRODUCT link type"
+position: 20
+category: Supported Formats
+icon: 'etsy'
+---
+
+**Type Value:** `ETSY_PRODUCT`  
+**Status:** ALPHA (Unstable)
+
+An `ETSY_PRODUCT` link type represents a handmade or vintage product listed on Etsy. Alongside the standard preview attributes (`title`, `description`, `image`), `ETSY_PRODUCT` links provide product-specific details like price, ratings, and images—helping you build more engaging e-commerce previews or product showcases.
+
+## What It Includes
+
+When `type` is `ETSY_PRODUCT`, the response includes an `etsyProduct` object with fields like:
+
+- **productId:** The unique Etsy product identifier.
+- **title & description:** Product name and a brief summary of its features or craftsmanship.
+- **price & currency:** Pricing information, including the currency used.
+- **rating & reviewCount:** Indicators of product quality and customer satisfaction.
+- **media:** An array of product images, enabling you to present multiple views and sizes for visual appeal.
+
+These details let you quickly convey the look, feel, and value of the product to your users, encouraging them to learn more or make a purchase.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://www.etsy.com/listing/1234567890/handmade-ceramic-mug"}'
+```
+
+## Example Response
+
+```json
+{
+  "ok": true,
+  "type": "ETSY_PRODUCT",
+  "title": "Handmade Ceramic Mug",
+  "description": "Beautiful handcrafted ceramic mug",
+  "image": {
+    "thumbnail": {
+      "width": 320,
+      "height": 320,
+      "url": "https://cdn.peekalink.io/public/images/etsy_product/thumbnail.jpg"
+    },
+    "medium": {
+      "width": 640,
+      "height": 640,
+      "url": "https://cdn.peekalink.io/public/images/etsy_product/medium.jpg"
+    },
+    "large": {
+      "width": 1080,
+      "height": 1080,
+      "url": "https://cdn.peekalink.io/public/images/etsy_product/large.jpg"
+    },
+    "original": {
+      "width": 1920,
+      "height": 1920,
+      "url": "https://cdn.peekalink.io/public/images/etsy_product/original.jpg"
+    }
+  },
+  "etsyProduct": {
+    "productId": "1234567890",
+    "title": "Handmade Ceramic Mug",
+    "description": "Beautiful handcrafted ceramic mug",
+    "price": 25.99,
+    "currency": "USD",
+    "rating": 4.8,
+    "reviewCount": 1500,
+    "media": [
+      {
+        "width": 1920,
+        "height": 1920,
+        "size": 204800,
+        "format": "jpeg",
+        "hasAlphaChannel": false,
+        "thumbnail": {
+          "width": 320,
+          "height": 320,
+          "url": "https://cdn.peekalink.io/public/images/etsy_product_media/thumbnail.jpg"
+        },
+        "medium": {
+          "width": 640,
+          "height": 640,
+          "url": "https://cdn.peekalink.io/public/images/etsy_product_media/medium.jpg"
+        },
+        "large": {
+          "width": 1080,
+          "height": 1080,
+          "url": "https://cdn.peekalink.io/public/images/etsy_product_media/large.jpg"
+        },
+        "original": {
+          "width": 1920,
+          "height": 1920,
+          "url": "https://cdn.peekalink.io/public/images/etsy_product_media/original.jpg"
+        }
+      }
+    ]
+  },
+  "updatedAt": "2025-03-10T10:00:00Z",
+  "url": "https://www.etsy.com/listing/1234567890/handmade-ceramic-mug",
+  "domain": "etsy.com",
+  "status": 200,
+  "redirected": false
+}
+
+```
+
+## Special Notes
+
+- **Fallback Strategies:** If certain metadata is missing, Peekalink infers defaults to maintain a complete preview.
+- **Handmade & Vintage Appeal:** Leverage descriptive fields and images to highlight the product’s uniqueness and craftsmanship.
+- **Ratings & Reviews:** Display these metrics to build trust and guide users toward quality products.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

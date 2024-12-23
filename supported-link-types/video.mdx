@@ -1,0 +1,112 @@
+---
+title: Video
+description: "Details for the VIDEO link type"
+position: 8
+category: Supported Formats
+icon: 'video'
+---
+
+**Type Value:** `VIDEO`  
+**Status:** PRODUCTION
+
+A `VIDEO` link type represents any video file accessible at a given URL, including common formats like MP4, WebM, MOV, AVI, FLV, and more.
+
+GIF files are also considered videos and will return this type.
+
+In addition to the standard preview fields (`title`, `description`, `image`), `VIDEO` links provide comprehensive technical details—such as duration, dimensions, format, and codec—plus optional snapshots and responsive video assets.
+
+This allows you to tailor the viewing experience, optimize performance, and provide meaningful metadata to your users.
+
+## What It Includes
+
+When `type` is `VIDEO`, the response includes a `video` object with fields like:
+
+- **duration:** Total length of the video in seconds.
+- **width, height:** The video's resolution if available.
+- **format:** The container/format used (e.g., mp4, webm, mov, gif).
+- **size:** File size in bytes.
+- **bitRate, frameRate, videoCodec:** Technical parameters to fine-tune user experience, such as playback quality or buffering strategies.
+- **hasAudio:** Indicates if the video includes an audio track.
+- **author:** If available, the creator's name or source.
+- **image & video fields:** Responsive images and video renditions for adaptive streaming, as well as `snapshots`—preview frames from various points in the video.
+
+These details help you offer adaptive streaming (e.g., using different resolutions), display a thumbnail snapshot, or even inform users about the video's length before they press play.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://example.com/media/ForBiggerBlazes.mp4"}'
+```
+
+## Example Response
+
+```json
+{
+  "ok": true,
+  "type": "VIDEO",
+  "title": "ForBiggerBlazes.mp4",
+  "description": "0:15.023311 · 1280x720 · 2.38 MB · MOV · 1.33 Mbps",
+  "image": {
+    "thumbnail": { "width": 320, "height": 180, "url": "..." },
+    "medium": { "width": 640, "height": 360, "url": "..." },
+    "large": { "width": 1280, "height": 720, "url": "..." },
+    "original": { "width": 1920, "height": 1080, "url": "..." }
+  },
+  "video": {
+    "name": "ForBiggerBlazes.mp4",
+    "title": "ForBiggerBlazes.mp4",
+    "duration": 120,
+    "width": 1920,
+    "height": 1080,
+    "format": "mp4",
+    "size": 10485760,
+    "bitRate": 2000000,
+    "frameRate": 30,
+    "videoCodec": "h264",
+    "hasAudio": true,
+    "author": "Example Studios",
+    "image": {
+      "thumbnail": { "width": 320, "height": 180, "url": "..." },
+      "medium": { "width": 640, "height": 360, "url": "..." },
+      "large": { "width": 1280, "height": 720, "url": "..." },
+      "original": { "width": 1920, "height": 1080, "url": "..." }
+    },
+    "video": {
+      "thumbnail": {
+        "width": 480,
+        "height": 360,
+        "url": "https://cdn.peekalink.io/kwldfxt1u8w2wk0qoome9343/1385/ForBiggerBlazes_thumbnail.webm"
+      },
+    "snapshots": [
+      {
+        "time": 10,
+        "image": { "width": 320, "height": 180, "url": "..." }
+      },
+      {
+        "time": 60,
+        "image": { "width": 320, "height": 180, "url": "..." }
+      }
+    ]
+  },
+  "updatedAt": "2024-05-01T10:00:00Z",
+  "url": "https://example.com/media/intro.mp4",
+  "domain": "example.com",
+  "status": 200,
+  "redirected": false
+}
+
+```
+
+## Special Notes
+
+
+- **Adaptive Experiences:** Use responsive images and possibly multiple video renditions to provide a seamless viewing experience across varying network conditions and device capabilities.
+- **Author & Metadata:** If an author or a descriptive title is available, it enhances the user's understanding of the content.
+- **Snapshots:** Grab frames at different timestamps to show previews (e.g., thumbnails for video timelines).
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

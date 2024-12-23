@@ -1,0 +1,107 @@
+---
+title: Text 
+description: "Details for the TEXT link type"
+position: 6
+category: Supported Formats
+icon: 'text'
+---
+
+**Type Value:** `TEXT`  
+**Status:** PRODUCTION
+
+A `TEXT` link type represents a plain text resource—such as a `.txt` file or other raw textual content accessible via a URL. Beyond the common preview attributes (`title`, `description`, `image`), `TEXT` links may provide estimated reading time and direct access to the raw text data.
+
+## What It Includes
+
+When `type` is `TEXT`, the response includes a `text` object with fields like:
+
+- **size:** The size of the text content in bytes.
+- **estimatedReadingTime:** Approximate reading time in minutes, based on the text length.
+- **rawTextUrl:** A URL to retrieve the raw text content.
+- **image:** A responsive image object providing various resolutions, if applicable.
+
+These fields allow you to offer a direct reading experience or content analysis. For example, you might display the estimated reading time next to the title or provide a link to the raw text for users who want to read the full content inline.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://example.com/notes/meeting.txt"}'
+```
+
+## Example response
+
+```json
+{
+  "ok": true,
+  "type": "TEXT",
+  "title": "Meeting Notes",
+  "description": "Summary of our Q1 strategy session and action items.",
+  "image": {
+    "thumbnail": {
+      "width": 320,
+      "height": 180,
+      "url": "https://cdn.peekalink.io/public/images/text/thumbnail.jpg"
+    },
+    "medium": {
+      "width": 640,
+      "height": 360,
+      "url": "https://cdn.peekalink.io/public/images/text/medium.jpg"
+    },
+    "large": {
+      "width": 1280,
+      "height": 720,
+      "url": "https://cdn.peekalink.io/public/images/text/large.jpg"
+    },
+    "original": {
+      "width": 1920,
+      "height": 1080,
+      "url": "https://cdn.peekalink.io/public/images/text/original.jpg"
+    }
+  },
+  "text": {
+    "size": 2048,
+    "estimatedReadingTime": 5,
+    "rawTextUrl": "https://api.peekalink.io/text/12345",
+    "image": {
+      "thumbnail": {
+        "width": 320,
+        "height": 414,
+        "url": "https://cdn.peekalink.io/public/images/text_pages/cover-thumbnail.jpg"
+      },
+      "medium": {
+        "width": 640,
+        "height": 828,
+        "url": "https://cdn.peekalink.io/public/images/text_pages/cover-medium.jpg"
+      },
+      "large": {
+        "width": 1280,
+        "height": 1656,
+        "url": "https://cdn.peekalink.io/public/images/text_pages/cover-large.jpg"
+      },
+      "original": {
+        "width": 1920,
+        "height": 2484,
+        "url": "https://cdn.peekalink.io/public/images/text_pages/cover-original.jpg"
+      }
+    }
+  },
+  "updatedAt": "2024-03-10T15:30:00Z",
+  "url": "https://example.com/notes/meeting.txt",
+  "domain": "example.com",
+  "status": 200,
+  "redirected": false
+}
+```
+
+## Special Notes
+
+- **Fallbacks & Computations:** If the source text lacks descriptive metadata, Peekalink uses AI-driven strategies to generate these fields.
+- **Estimated reading time:** is computed by analyzing the extracted text content.
+- **Raw Text Access:** The rawTextUrl provides direct access to the full text content for display or processing.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

@@ -1,0 +1,159 @@
+---
+title: Document
+description: "Details for the DOCUMENT link type"
+position: 5
+category: Supported Formats
+icon: 'file-invoice'
+---
+
+**Type Value:** `DOCUMENT`  
+**Status:** PRODUCTION
+
+A `DOCUMENT` link type represents common document formats including:
+- PDF files (`.pdf`)
+- Microsoft Word documents (`.doc`, `.docx`) 
+- Rich Text Format files (`.rtf`)
+- OpenDocument Text files (`.odt`)
+- Microsoft Excel spreadsheets (`.xls`, `.xlsx`)
+- Microsoft PowerPoint presentations (`.ppt`, `.pptx`)
+- XML documents (`.xml`)
+
+In addition to the common attributes (`title`, `description`, `image`), `DOCUMENT` links provide detailed information like page count, author, and optional raw text access. If available, you can also retrieve responsive images for visual previews and even inspect individual pages of the document.
+
+## What It Includes
+
+When `type` is `DOCUMENT`, the response includes a `document` object with fields like:
+
+- **title:** Title of the document.
+- **type:** The document format (e.g., pdf, docx, xlsx, etc.).
+- **description:** A brief summary if available or inferred.
+- **estimatedReadingTime:** Approximate reading time in minutes based on the document's length.
+- **rawTextUrl:** A URL to fetch the document's raw text.
+- **image:** A responsive image object providing different resolutions of a representative page image (e.g., cover page).
+- **pages:** An array of page-level metadata (if available).
+- **pageCount:** Total number of pages in the document.
+- **author:** The author or creator's name.
+- **isEncrypted:** Indicates whether the document is encrypted or password-protected.
+- **lastModified:** Timestamp of the last modification date.
+- **language:** The primary language of the document's content.
+
+These details let you build rich document previews—for instance, displaying the page count next to the title, showing a cover image thumbnail, or offering a "Read More" button linked to the raw text or a viewer.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://example.com/reports/annual_report_2024.pdf"}'
+```
+
+## Example Response
+
+```json
+{
+  "ok": true,
+  "type": "DOCUMENT",
+  "title": "Annual Report 2024",
+  "description": "A comprehensive review of our fiscal year performance and strategic outlook.",
+  "image": {
+    "thumbnail": {
+      "width": 320,
+      "height": 414,
+      "url": "https://cdn.peekalink.io/public/images/document/thumbnail.jpg"
+    },
+    "medium": {
+      "width": 640,
+      "height": 828,
+      "url": "https://cdn.peekalink.io/public/images/document/medium.jpg"
+    },
+    "large": {
+      "width": 1280,
+      "height": 1656,
+      "url": "https://cdn.peekalink.io/public/images/document/large.jpg"
+    },
+    "original": {
+      "width": 1920,
+      "height": 2484,
+      "url": "https://cdn.peekalink.io/public/images/document/original.jpg"
+    }
+  },
+  "document": {
+    "title": "Annual Report 2024",
+    "type": "pdf",
+    "description": "A comprehensive review of our fiscal year performance and strategic outlook.",
+    "estimatedReadingTime": 30,
+    "rawTextUrl": "https://api.peekalink.io/text/12345",
+    "image": {
+      "thumbnail": {
+        "width": 320,
+        "height": 414,
+        "url": "https://cdn.peekalink.io/public/images/document_pages/cover-thumbnail.jpg"
+      },
+      "medium": {
+        "width": 640,
+        "height": 828,
+        "url": "https://cdn.peekalink.io/public/images/document_pages/cover-medium.jpg"
+      },
+      "large": {
+        "width": 1280,
+        "height": 1656,
+        "url": "https://cdn.peekalink.io/public/images/document_pages/cover-large.jpg"
+      },
+      "original": {
+        "width": 1920,
+        "height": 2484,
+        "url": "https://cdn.peekalink.io/public/images/document_pages/cover-original.jpg"
+      }
+    },
+    "pages": [
+      {
+        "pageNumber": 1,
+        "image": {
+          "thumbnail": {
+            "width": 320,
+            "height": 414,
+            "url": "https://cdn.peekalink.io/public/images/document_pages/page1-thumbnail.jpg"
+          },
+          "medium": {
+            "width": 640,
+            "height": 828,
+            "url": "https://cdn.peekalink.io/public/images/document_pages/page1-medium.jpg"
+          },
+          "large": {
+            "width": 1280,
+            "height": 1656,
+            "url": "https://cdn.peekalink.io/public/images/document_pages/page1-large.jpg"
+          },
+          "original": {
+            "width": 1920,
+            "height": 2484,
+            "url": "https://cdn.peekalink.io/public/images/document_pages/page1-original.jpg"
+          }
+        }
+      }
+    ],
+    "pageCount": 1,
+    "author": "Finance Department",
+    "isEncrypted": false,
+    "lastModified": "2023-12-15T10:30:00Z",
+    "language": "en"
+  },
+  "updatedAt": "2024-02-01T09:00:00Z",
+  "url": "https://example.com/reports/annual_report_2024.pdf",
+  "domain": "example.com",
+  "status": 200,
+  "redirected": false
+}
+```
+
+## Special Notes
+
+- **Fallback Strategies:** Similar to PAGE links, if the document's metadata is limited, Peekalink uses AI-driven techniques to infer missing title or description.
+- **Estimated Reading Time:** Calculated based on the extracted text's length.
+- **Page-Level Images & Data:** Each page may have its own responsive image set, letting you show previews of individual pages.
+- **Format & Encryption:** The `type` field helps identify the file format (e.g., pdf), and `isEncrypted` warns if the document is protected.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

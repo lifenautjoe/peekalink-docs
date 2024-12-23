@@ -1,34 +1,31 @@
 ---
-title: Quickstart
-description: "A quick way to start using the Peekalink API"
-position: 2
-category: Getting Started
-icon: 'rocket'
+title: YouTube Video
+description: "Details for the YOUTUBE_VIDEO link type"
+position: 8
+category: Supported Formats
+icon: 'youtube'
 ---
 
-In this guide, you’ll learn how to make your first request to the Peekalink API. By the end, you’ll be able to send a link to Peekalink and receive a detailed, enriched preview in return.
+**Type Value:** `YOUTUBE_VIDEO`  
+**Status:** PRODUCTION
 
-## Prerequisites
+A `YOUTUBE_VIDEO` link type corresponds to a YouTube video URL. Beyond the common attributes (`title`, `description`, `image`), `YOUTUBE_VIDEO` links include additional metadata like the video’s duration, view counts, and user (channel) information. This helps you display detailed previews that highlight a video’s popularity, relevance, and origin.
 
-- **API Key:** Sign up and visit the [Dashboard](#) to get your API key.
-- **HTTP Client:** Any tool you prefer (cURL, Postman, or your favorite language’s HTTP library).
+## What It Includes
 
-## 1. Get Your API Key
+When `type` is `YOUTUBE_VIDEO`, the response includes a `youtubeVideo` object with fields like:
 
-Head over to the [Dashboard](#) and copy your API key. You’ll use this key to authenticate your requests.
+- **videoId:** The unique YouTube video identifier.
+- **user:** Information about the channel or user who uploaded the video.
+- **publishedAt:** The date and time when the video was published.
+- **duration:** Video length in seconds.
+- **viewsCount, likesCount, dislikesCount, commentsCount:** Engagement metrics that reflect the video’s popularity and user interaction.
+- **rating:** A computed rating value.
+- **thumbnail:** A responsive image object with various resolutions, ideal for displaying a suitable thumbnail size in your UI.
 
-## 2. Make Your First Request
+By accessing these attributes, you can create rich video previews that show users how popular or recent a video is, who created it, and what they can expect from its content.
 
-Below is a simple example using `curl`. Replace `YOUR_API_KEY` with your actual key, and `LINK_TO_PREVIEW` with the URL you want to preview.
-
-```bash
-curl -X POST "https://api.peekalink.io/" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"link": "LINK_TO_PREVIEW"}'
-```
-
-For example:
+## Example Request
 
 ```bash
 curl -X POST "https://api.peekalink.io/" \
@@ -37,9 +34,7 @@ curl -X POST "https://api.peekalink.io/" \
   -d '{"link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}'
 ```
 
-## 3. Check the Response
-
-A successful request returns a JSON object with rich metadata. Here’s an example of what you might see when previewing a YouTube video:
+## Example Response
 
 ```json
 {
@@ -174,27 +169,12 @@ A successful request returns a JSON object with rich metadata. Here’s an examp
 }
 ```
 
-All successful responses will return a JSON object with the following pattern:
+## Special Notes
 
-- **title:** The title extracted from the link.
-- **description:** A descriptive summary, if available.
-- **image:** Optimized image previews hosted on Peekalink’s CDN.
-- **Platform-specific data:** For YouTube Videos, you'll see a `youtubeVideo` object with details like viewCount, likeCount, and duration.
+- **Fallback Strategies:** If certain metadata is missing, Peekalink attempts to infer title, description, or image to maintain a consistent preview experience.
+- **Engagement Metrics:** Views, likes, and comments data allow you to highlight a video’s popularity or credibility.
+- **Channel Integration:** The user field connects the video to its creator’s channel details, which can be leveraged to display subscriber counts or channel branding.
 
-## 4. Build Into Your Application
+## Schema reference
 
-You can now use this metadata to create rich previews in your app. For example:
-
-- **Social Feeds:** Show thumbnails, titles, descriptions and platform-specific details for shared links.
-- **AI Chatbots:** Give your bot immediate context about shared URLs.
-- **Content Aggregation:** Store and analyze structured link metadata at scale.
-
-## 5. Next Steps
-
-- Explore the [API Reference](/api-reference) to learn about all supported formats and fields.
-- Check [Guides](/essentials/markdown) for best practices and advanced integrations.
-- View [Pricing](https://mintlify.com/docs) to select the plan that matches your usage needs.
-
-You’ve just made your first request to Peekalink and received a rich link preview 🎉.
-
-Happy building! 🚀
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

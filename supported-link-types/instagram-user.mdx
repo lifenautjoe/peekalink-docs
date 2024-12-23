@@ -1,0 +1,125 @@
+---
+title: Instagram User
+description: "Details for the INSTAGRAM_USER link type"
+position: 13
+category: Supported Formats
+icon: 'instagram'
+---
+
+**Type Value:** `INSTAGRAM_USER`  
+**Status:** BETA
+
+An `INSTAGRAM_USER` link type corresponds to an Instagram profile. In addition to the baseline preview attributes (`title`, `description`, `image`), `INSTAGRAM_USER` links provide rich information about the user’s account, including their follower counts, bio, and verification status. This makes it simple to display detailed profile previews and give your users a quick snapshot of a creator or influencer’s reach.
+
+## What It Includes
+
+When `type` is `INSTAGRAM_USER`, the response includes an `instagramUser` object with fields like:
+
+- **username & name:** The user’s handle and display name.
+- **avatar:** Responsive images representing the user’s profile picture.
+- **bio:** A short biography or description provided by the user.
+- **url:** A personal website URL, if set.
+- **followersCount, followingCount, postsCount:** Metrics reflecting the user’s scale of influence and activity.
+- **visibility:** Indicates if the account is `PUBLIC` or `PRIVATE`.
+- **verified:** Whether the account is verified by Instagram.
+
+With these attributes, you can highlight a user’s credibility, popularity, and content focus, helping users discover interesting profiles more quickly.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://www.instagram.com/cristiano"}'
+```
+
+## Example Response
+
+```json
+{
+    "id": 532,
+    "ok": true,
+    "url": "https://www.instagram.com/cristiano/",
+    "domain": "instagram.com",
+    "type": "INSTAGRAM_USER",
+    "status": 200,
+    "updatedAt": "2024-11-27T13:28:56.501Z",
+    "redirected": false,
+    "title": "Cristiano Ronaldo | (@cristiano)",
+    "description": "SIUUUbscribe to my Youtube Channel!",
+    "icon": {
+        "url": "https://cdn.peekalink.io/l9ih5hh34p97gfkdhlm5xoub/999/VsNE-OHk_8a.png",
+        "width": 32,
+        "height": 32,
+        "backgroundColor": "#000000"
+    },
+    "image": {
+        "thumbnail": {
+            "width": 100,
+            "height": 100,
+            "url": "https://cdn.peekalink.io/sj4want0rjvkkk5cipk0uch9/1310/278931269_360124899498969_9006978846103417088_n.jpeg"
+        },
+        "medium": {
+            "width": 100,
+            "height": 100,
+            "url": "https://cdn.peekalink.io/sj4want0rjvkkk5cipk0uch9/1310/278931269_360124899498969_9006978846103417088_n.jpeg"
+        },
+        "large": {
+            "width": 100,
+            "height": 100,
+            "url": "https://cdn.peekalink.io/sj4want0rjvkkk5cipk0uch9/1310/278931269_360124899498969_9006978846103417088_n.jpeg"
+        },
+        "original": {
+            "width": 100,
+            "height": 100,
+            "url": "https://cdn.peekalink.io/sj4want0rjvkkk5cipk0uch9/1310/278931269_360124899498969_9006978846103417088_n.jpeg"
+        }
+    },
+    "instagramUser": {
+        "id": 4,
+        "username": "cristiano",
+        "verified": true,
+        "name": "Cristiano Ronaldo",
+        "bio": "SIUUUbscribe to my Youtube Channel!",
+        "url": "https://youtube.com/@cristiano?sub_confirmation=1",
+        "followersCount": 644000000,
+        "followingCount": 587,
+        "postsCount": 3788,
+        "visibility": "PUBLIC",
+        "avatar": {
+            "thumbnail": {
+                "width": 100,
+                "height": 100,
+                "url": "https://cdn.peekalink.io/sj4want0rjvkkk5cipk0uch9/1310/278931269_360124899498969_9006978846103417088_n.jpeg"
+            },
+            "medium": {
+                "width": 100,
+                "height": 100,
+                "url": "https://cdn.peekalink.io/sj4want0rjvkkk5cipk0uch9/1310/278931269_360124899498969_9006978846103417088_n.jpeg"
+            },
+            "large": {
+                "width": 100,
+                "height": 100,
+                "url": "https://cdn.peekalink.io/sj4want0rjvkkk5cipk0uch9/1310/278931269_360124899498969_9006978846103417088_n.jpeg"
+            },
+            "original": {
+                "width": 100,
+                "height": 100,
+                "url": "https://cdn.peekalink.io/sj4want0rjvkkk5cipk0uch9/1310/278931269_360124899498969_9006978846103417088_n.jpeg"
+            }
+        }
+    },
+    "requestId": "cm4r4u0670003713cdiekwqgv"
+}
+```
+
+## Special Notes
+
+- **Fallback Strategies:** If certain fields (like name or description) are missing, Peekalink infers suitable defaults to maintain a consistent preview.
+- **Visibility & Verification:** Use these fields to present public accounts prominently or to highlight verified creators.
+- **Scalable Integration:** Start by showing basic profile info and incrementally add more data—like follower counts or a link to their personal website—as your use case evolves.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

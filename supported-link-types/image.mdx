@@ -1,0 +1,89 @@
+---
+title: Image
+description: "Details for the IMAGE link type"
+position: 7
+category: Supported Formats
+icon: 'image'
+---
+
+**Type Value:** `IMAGE`  
+**Status:** PRODUCTION
+
+An `IMAGE` link type represents direct image files (e.g., JPEG, PNG, WebP, SVG, ICO) accessible at a given URL. In addition to the standard preview fields (`title`, `description`, `image`), `IMAGE` links include detailed information about the image’s dimensions, format, size, and even extracted color palettes—letting you provide a richer, more visual preview experience.
+
+## What It Includes
+
+When `type` is `IMAGE`, the response includes an `image` object with the following fields:
+
+- **width, height:** Dimensions of the image in pixels.
+- **size:** File size in bytes.
+- **format:** The image’s file format (e.g. `jpeg`, `png`).
+- **hasAlphaChannel:** Indicates if the image supports transparency.
+- **Color Analysis:** Additional optional fields like `backgroundColor`, `vibrantColor`, `mutedColor`, and their variants to help identify dominant and standout colors.
+- **Responsive Image Assets:** Multiple versions (`thumbnail`, `medium`, `large`, `original`) of the image at different resolutions, making it easy to serve the right size for various screen sizes or use cases.
+
+These details help you optimize image display in your application. For example, you can choose a low-resolution thumbnail for quick loading and transition to a higher resolution image on demand, or use extracted colors to style your interface.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://example.com/images/sample.jpg"}'
+```
+
+
+## Example Response
+
+```json
+{
+  "ok": true,
+  "type": "IMAGE",
+  "title": "sample.jpg",
+  "description": "2000x1333 · JPEG · 5.30 MB",
+  "image": {
+    "width": 1920,
+    "height": 1080,
+    "size": 204800,
+    "format": "jpeg",
+    "hasAlphaChannel": false,
+    "thumbnail": {
+      "width": 320,
+      "height": 180,
+      "url": "https://cdn.peekalink.io/public/images/sample-thumbnail.jpg"
+    },
+    "medium": {
+      "width": 640,
+      "height": 360,
+      "url": "https://cdn.peekalink.io/public/images/sample-medium.jpg"
+    },
+    "large": {
+      "width": 1280,
+      "height": 720,
+      "url": "https://cdn.peekalink.io/public/images/sample-large.jpg"
+    },
+    "original": {
+      "width": 1920,
+      "height": 1080,
+      "url": "https://cdn.peekalink.io/public/images/sample-original.jpg"
+    }
+  },
+  "updatedAt": "2024-04-15T10:00:00Z",
+  "url": "https://example.com/images/sample.jpg",
+  "domain": "example.com",
+  "status": 200,
+  "redirected": false
+}
+
+```
+
+## Special Notes
+
+- **Color Palette Insights:** Extracted colors let you create color-coordinated UI elements, such as backgrounds or borders that match the image's theme.
+- **Responsive Assets:** Multiple resolutions of the image help optimize performance, especially on mobile devices or slow networks.
+
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

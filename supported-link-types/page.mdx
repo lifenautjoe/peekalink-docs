@@ -1,0 +1,109 @@
+---
+title: Page
+description: "Details for the PAGE link type"
+position: 4
+category: Supported Formats
+icon: 'browser'
+---
+
+**Type Value:** `PAGE`  
+**Status:** PRODUCTION
+
+A `PAGE` link type represents a standard webpage—such as an article, blog post, or informational page. Beyond the common attributes (`title`, `description`, `image`), `PAGE` links may provide additional information like estimated reading time, direct access to raw text, markdown, or even an automatically captured screenshot.
+
+## What It Includes
+
+When `type` is `PAGE`, the response includes a `page` object with the following potential fields:
+
+- **estimatedReadingTimeInMinutes:** Approximate reading time calculated from the content’s length.
+- **screenshot:** A responsive image object capturing a snapshot of the page.
+- **htmlUrl:** A URL to an HTML-rendered version of the page.
+- **markdownUrl:** A URL to a Markdown version of the page content.
+- **rawTextUrl:** A URL providing raw text extracted from the page.
+
+These extras help you deliver richer previews. For example, you can show a reading time estimate in your UI or display an inline screenshot thumbnail.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://example.com/some-article"}'
+```
+
+## Example Response
+
+```json
+{
+  "ok": true,
+  "type": "PAGE",
+  "title": "Understanding the Cosmos",
+  "description": "A deep dive into cosmic mysteries and dark matter.",
+  "image": {
+    "thumbnail": {
+      "width": 320,
+      "height": 180,
+      "url": "https://cdn.peekalink.io/public/images/thumbnail.jpg"
+    },
+    "medium": {
+      "width": 640,
+      "height": 360,
+      "url": "https://cdn.peekalink.io/public/images/medium.jpg"
+    },
+    "large": {
+      "width": 1280,
+      "height": 720,
+      "url": "https://cdn.peekalink.io/public/images/large.jpg"
+    },
+    "original": {
+      "width": 1920,
+      "height": 1080,
+      "url": "https://cdn.peekalink.io/public/images/original.jpg"
+    }
+  },
+  "page": {
+    "estimatedReadingTimeInMinutes": 7,
+    "screenshot": {
+      "thumbnail": {
+        "width": 320,
+        "height": 200,
+        "url": "https://cdn.peekalink.io/public/images/screenshots/thumbnail.jpg"
+      },
+      "medium": {
+        "width": 640,
+        "height": 400,
+        "url": "https://cdn.peekalink.io/public/images/screenshots/medium.jpg"
+      },
+      "large": {
+        "width": 1280,
+        "height": 800,
+        "url": "https://cdn.peekalink.io/public/images/screenshots/large.jpg"
+      },
+      "original": {
+        "width": 1920,
+        "height": 1200,
+        "url": "https://cdn.peekalink.io/public/images/screenshots/original.jpg"
+      }
+    },
+    "htmlUrl": "https://api.peekalink.io/html/12345",
+    "markdownUrl": "https://api.peekalink.io/md/12345",
+    "rawTextUrl": "https://api.peekalink.io/text/12345"
+  },
+  "updatedAt": "2024-01-01T12:00:00Z",
+  "url": "https://example.com/some-article",
+  "domain": "example.com",
+  "status": 200,
+  "redirected": false
+}
+```
+
+## Special Notes
+
+- **Fallbacks & Computations:** If the original page lacks certain metadata (like title or description), Peekalink uses AI-driven strategies to generate these fields.
+- **Estimated reading time:** is computed by analyzing the extracted text content.
+- **Screenshots & Content Exports:** Screenshots are generated automatically and hosted on our CDN for quick retrieval. The HTML, Markdown, and raw text URLs are dynamically generated, giving you flexible ways to present or process the page’s content.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

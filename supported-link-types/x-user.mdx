@@ -1,0 +1,150 @@
+---
+title: X User
+description: "Details for the X_USER link type (formerly Twitter)"
+position: 10
+category: Supported Formats
+icon: 'x'
+---
+
+**Type Value:** `X_USER`  
+**Status:** PRODUCTION
+
+An `X_USER` link type represents a user profile from X (formerly known as Twitter). Beyond the basic preview attributes (`title`, `description`, `image`), `X_USER` links provide enriched metadata about the user’s profile, social graph, and other account details. This makes it easy to display more complete and informative user profiles within your application.
+
+## What It Includes
+
+When `type` is `X_USER`, the response includes an `xUser` object with fields like:
+
+- **username & name:** The user’s handle and display name.
+- **avatar & cover:** Responsive images for the user’s profile picture and header image.
+- **bio & location:** Additional context about who they are and where they’re located.
+- **verified:** Indicates if the user is verified.
+- **followersCount, followingCount, postsCount:** Engagement metrics that give a sense of the user’s reach and activity.
+- **joinedAt:** The date when the account was created.
+- **protected & sensitive:** Flags indicating if the account’s tweets are protected or contain sensitive content.
+- **url:** A personal website URL listed in the profile.
+
+With these attributes, you can provide richer user previews, whether building a social media aggregator or displaying user summaries in a dashboard.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://x.com/levelsio"}'
+```
+
+## Example Response
+
+```json
+{
+    "id": 398,
+    "ok": true,
+    "url": "https://x.com/levelsio",
+    "domain": "x.com",
+    "type": "X_USER",
+    "status": 200,
+    "updatedAt": "2024-11-26T16:52:14.023Z",
+    "redirected": false,
+    "title": "@levelsio (@levelsio)",
+    "description": "http://Pieter.com est. 1994\nhttp://PhotoAI.com $120K/m\nhttp://InteriorAI.com $38K/m\nhttp://RemoteOK.com $37K/m\nhttp://Nomads.com $35K/m\nhttp://levelsio.com $23K/m",
+    "icon": {
+        "url": "https://cdn.peekalink.io/q683xf7i54nwiu5h97n293gw/99/twitter.3.png",
+        "width": 32,
+        "height": 32,
+        "backgroundColor": "#000000"
+    },
+    "image": {
+        "thumbnail": {
+            "url": "https://cdn.peekalink.io/nc37vay1i5nfeh9wytnq4p50/1139/YlXMBzhp_400x400_thumbnail.jpeg",
+            "width": 240,
+            "height": 240
+        },
+        "medium": {
+            "url": "https://cdn.peekalink.io/nc37vay1i5nfeh9wytnq4p50/1139/YlXMBzhp_400x400_medium.jpeg",
+            "width": 400,
+            "height": 400
+        },
+        "large": {
+            "url": "https://cdn.peekalink.io/nc37vay1i5nfeh9wytnq4p50/1139/YlXMBzhp_400x400_large.jpeg",
+            "width": 400,
+            "height": 400
+        },
+        "original": {
+            "url": "https://cdn.peekalink.io/nc37vay1i5nfeh9wytnq4p50/1139/YlXMBzhp_400x400_original.jpeg",
+            "width": 400,
+            "height": 400
+        }
+    },
+    "xUser": {
+        "id": 8,
+        "username": "levelsio",
+        "name": "@levelsio",
+        "bio": "http://Pieter.com est. 1994\nhttp://PhotoAI.com $120K/m\nhttp://InteriorAI.com $38K/m\nhttp://RemoteOK.com $37K/m\nhttp://Nomads.com $35K/m\nhttp://levelsio.com $23K/m",
+        "verified": true,
+        "followersCount": 577167,
+        "followingCount": 1564,
+        "postsCount": 141631,
+        "url": "readMAKE.com",
+        "location": "My book $20K/m",
+        "joinedAt": "2013-06-30T23:00:00.000Z",
+        "sensitive": false,
+        "avatar": {
+            "thumbnail": {
+                "url": "https://cdn.peekalink.io/nc37vay1i5nfeh9wytnq4p50/1139/YlXMBzhp_400x400_thumbnail.jpeg",
+                "width": 240,
+                "height": 240
+            },
+            "medium": {
+                "url": "https://cdn.peekalink.io/nc37vay1i5nfeh9wytnq4p50/1139/YlXMBzhp_400x400_medium.jpeg",
+                "width": 400,
+                "height": 400
+            },
+            "large": {
+                "url": "https://cdn.peekalink.io/nc37vay1i5nfeh9wytnq4p50/1139/YlXMBzhp_400x400_large.jpeg",
+                "width": 400,
+                "height": 400
+            },
+            "original": {
+                "url": "https://cdn.peekalink.io/nc37vay1i5nfeh9wytnq4p50/1139/YlXMBzhp_400x400_original.jpeg",
+                "width": 400,
+                "height": 400
+            }
+        },
+        "cover": {
+            "thumbnail": {
+                "url": "https://cdn.peekalink.io/u5ioa3a15xb8f0nusfn14ddq/1140/1500x500_thumbnail.jpeg",
+                "width": 320,
+                "height": 107
+            },
+            "medium": {
+                "url": "https://cdn.peekalink.io/u5ioa3a15xb8f0nusfn14ddq/1140/1500x500_medium.jpeg",
+                "width": 640,
+                "height": 213
+            },
+            "large": {
+                "url": "https://cdn.peekalink.io/u5ioa3a15xb8f0nusfn14ddq/1140/1500x500_large.jpeg",
+                "width": 1280,
+                "height": 427
+            },
+            "original": {
+                "url": "https://cdn.peekalink.io/u5ioa3a15xb8f0nusfn14ddq/1140/1500x500_original.jpeg",
+                "width": 1500,
+                "height": 500
+            }
+        }
+    },
+    "requestId": "cm3yp34020001x9plpu3r2uyr"
+}
+```
+
+## Special Notes
+
+- **Fallback Strategies:** If certain metadata is missing, Peekalink attempts to infer a title or description.
+- **Social Graph Metrics:** Followers, following, and post counts let you highlight the user’s popularity and activity level.
+- **Privacy & Sensitivity Flags:** Use protected and sensitive to decide how to present content from these users in your app.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

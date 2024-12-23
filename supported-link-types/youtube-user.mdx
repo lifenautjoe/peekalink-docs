@@ -1,0 +1,148 @@
+---
+title: YouTube User
+description: "Details for the YOUTUBE_USER link type"
+position: 9
+category: Supported Formats
+icon: 'youtube'
+---
+
+**Type Value:** `YOUTUBE_USER`  
+**Status:** PRODUCTION
+
+A `YOUTUBE_USER` link type represents a YouTube channel or user page. Beyond the baseline preview fields (`title`, `description`, `image`), `YOUTUBE_USER` links provide additional metadata about the channel, such as the username, subscriber count, total views, and upload frequency. This makes it easy to display richer user profiles, highlight popular creators, or give users insight into a channel’s history and content reach.
+
+## What It Includes
+
+When `type` is `YOUTUBE_USER`, the response includes a `youtubeUser` object with fields like:
+
+- **username & name:** The channel’s handle and display name.
+- **avatar & banner:** Responsive image objects for channel branding assets.
+- **description:** The channel’s about section or mission statement.
+- **subscribersCount, videosCount, viewsCount:** Engagement metrics that show the channel’s scale and popularity.
+- **joinedAt:** The channel’s creation date.
+- **visibility & isFamilySafe:** Information about the channel’s availability and content rating.
+- **verified:** Indicates whether the channel has been verified by YouTube.
+- **url:** Direct link to the channel’s page.
+
+These fields let you create detailed channel profiles in your app, such as showing a creator’s thumbnail, subscriber base, and verification status.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://www.youtube.com/@pewdiepie"}'
+```
+
+
+## Example Response
+
+```json
+{
+    "id": 598,
+    "ok": true,
+    "url": "https://www.youtube.com/@pewdiepie",
+    "domain": "youtube.com",
+    "type": "YOUTUBE_USER",
+    "status": 200,
+    "updatedAt": "2024-11-26T17:21:51.686Z",
+    "redirected": false,
+    "title": "PewDiePie",
+    "description": "I make videos.",
+    "icon": {
+        "url": "https://cdn.peekalink.io/vmjzrj5uhcuzi92y6kxo9i3u/1107/favicon_32x32.png",
+        "width": 32,
+        "height": 32,
+        "backgroundColor": "#FFFFFF"
+    },
+    "image": {
+        "thumbnail": {
+            "width": 240,
+            "height": 240,
+            "url": "https://cdn.peekalink.io/x7kerssmaytwva0b4tah29uk/1119/5oUY3tashyxfqsjO5SGhjT4dus8FkN9CsAHwXWISFrdPYii1FudD4ICtLfuCw6-THJsJbgoY=s900-c-k-c0x00ffffff-no-rj_thumbnail.jpeg"
+        },
+        "medium": {
+            "width": 480,
+            "height": 480,
+            "url": "https://cdn.peekalink.io/x7kerssmaytwva0b4tah29uk/1119/5oUY3tashyxfqsjO5SGhjT4dus8FkN9CsAHwXWISFrdPYii1FudD4ICtLfuCw6-THJsJbgoY=s900-c-k-c0x00ffffff-no-rj_medium.jpeg"
+        },
+        "large": {
+            "width": 900,
+            "height": 900,
+            "url": "https://cdn.peekalink.io/x7kerssmaytwva0b4tah29uk/1119/5oUY3tashyxfqsjO5SGhjT4dus8FkN9CsAHwXWISFrdPYii1FudD4ICtLfuCw6-THJsJbgoY=s900-c-k-c0x00ffffff-no-rj_large.jpeg"
+        },
+        "original": {
+            "width": 900,
+            "height": 900,
+            "url": "https://cdn.peekalink.io/x7kerssmaytwva0b4tah29uk/1119/5oUY3tashyxfqsjO5SGhjT4dus8FkN9CsAHwXWISFrdPYii1FudD4ICtLfuCw6-THJsJbgoY=s900-c-k-c0x00ffffff-no-rj_original.jpeg"
+        }
+    },
+    "youtubeUser": {
+        "id": 7,
+        "username": "@pewdiepie",
+        "name": "PewDiePie",
+        "description": "I make videos.",
+        "subscribersCount": 110000000,
+        "videosCount": 4700,
+        "verified": true,
+        "visibility": "PUBLIC",
+        "isFamilySafe": true,
+        "avatar": {
+            "thumbnail": {
+                "width": 240,
+                "height": 240,
+                "url": "https://cdn.peekalink.io/x7kerssmaytwva0b4tah29uk/1119/5oUY3tashyxfqsjO5SGhjT4dus8FkN9CsAHwXWISFrdPYii1FudD4ICtLfuCw6-THJsJbgoY=s900-c-k-c0x00ffffff-no-rj_thumbnail.jpeg"
+            },
+            "medium": {
+                "width": 480,
+                "height": 480,
+                "url": "https://cdn.peekalink.io/x7kerssmaytwva0b4tah29uk/1119/5oUY3tashyxfqsjO5SGhjT4dus8FkN9CsAHwXWISFrdPYii1FudD4ICtLfuCw6-THJsJbgoY=s900-c-k-c0x00ffffff-no-rj_medium.jpeg"
+            },
+            "large": {
+                "width": 900,
+                "height": 900,
+                "url": "https://cdn.peekalink.io/x7kerssmaytwva0b4tah29uk/1119/5oUY3tashyxfqsjO5SGhjT4dus8FkN9CsAHwXWISFrdPYii1FudD4ICtLfuCw6-THJsJbgoY=s900-c-k-c0x00ffffff-no-rj_large.jpeg"
+            },
+            "original": {
+                "width": 900,
+                "height": 900,
+                "url": "https://cdn.peekalink.io/x7kerssmaytwva0b4tah29uk/1119/5oUY3tashyxfqsjO5SGhjT4dus8FkN9CsAHwXWISFrdPYii1FudD4ICtLfuCw6-THJsJbgoY=s900-c-k-c0x00ffffff-no-rj_original.jpeg"
+            }
+        },
+        "banner": {
+            "thumbnail": {
+                "width": 320,
+                "height": 53,
+                "url": "https://cdn.peekalink.io/o5p4v26420s5930u6xwaviqt/1145/82q_54Y1P3uTo9hVWV82rIE_O_j4cZUaB_wFq_4LKcteG72IEaDqBsuoXarUA35osaFX6q-0=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj_thumbnail.jpeg"
+            },
+            "medium": {
+                "width": 640,
+                "height": 106,
+                "url": "https://cdn.peekalink.io/o5p4v26420s5930u6xwaviqt/1145/82q_54Y1P3uTo9hVWV82rIE_O_j4cZUaB_wFq_4LKcteG72IEaDqBsuoXarUA35osaFX6q-0=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj_medium.jpeg"
+            },
+            "large": {
+                "width": 1280,
+                "height": 212,
+                "url": "https://cdn.peekalink.io/o5p4v26420s5930u6xwaviqt/1145/82q_54Y1P3uTo9hVWV82rIE_O_j4cZUaB_wFq_4LKcteG72IEaDqBsuoXarUA35osaFX6q-0=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj_large.jpeg"
+            },
+            "original": {
+                "width": 1998,
+                "height": 331,
+                "url": "https://cdn.peekalink.io/o5p4v26420s5930u6xwaviqt/1145/82q_54Y1P3uTo9hVWV82rIE_O_j4cZUaB_wFq_4LKcteG72IEaDqBsuoXarUA35osaFX6q-0=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj_original.jpeg"
+            }
+        }
+    },
+    "requestId": "cm4r4fr5t0003vswvnc7x07uc"
+}
+```
+
+## Special Notes
+
+- **Fallback Strategies:** If the user’s channel lacks certain metadata, Peekalink attempts to infer title or description where possible.
+- **Verification & Family-Safe Indicators:** Use these fields to adjust UI or filter out channels based on content suitability or trustworthiness.
+- **Branding Assets:** Avatar and banner images come in multiple sizes, letting you seamlessly integrate them into various layouts.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

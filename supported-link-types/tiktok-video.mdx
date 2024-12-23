@@ -1,0 +1,158 @@
+---
+title: TikTok Video
+description: "Details for the TIKTOK_VIDEO link type"
+position: 18
+category: Supported Formats
+icon: 'tiktok'
+---
+
+**Type Value:** `TIKTOK_VIDEO`  
+**Status:** PRODUCTION
+
+A `TIKTOK_VIDEO` link type corresponds to a TikTok video. Along with the common preview attributes (`title`, `description`, `image`), `TIKTOK_VIDEO` links provide extensive data about the video’s creator, engagement metrics, and associated media assets. This helps you deliver more informative previews—like showing video thumbnails, engagement counts, and even associated user details.
+
+## What It Includes
+
+When `type` is `TIKTOK_VIDEO`, the response includes a `tiktokVideo` object with fields such as:
+
+- **user:** Information about the creator, including their username, display name, avatar, and verification status.
+- **publishedAt:** The date and time the video was posted.
+- **text (caption):** The text caption that accompanies the video.
+- **media:** An array of media items (images or videos), making it easy to display a thumbnail or even a short snippet.
+- **likesCount, commentsCount, playsCount, sharesCount:** Engagement metrics that show how the video is performing on the platform.
+
+By leveraging these fields, you can create rich video previews that provide immediate context—how popular the video is, who created it, and what users can expect from it.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://www.tiktok.com/@charlidamelio/video/7123456789"}'
+```
+
+## Example Response
+
+```json
+{
+    "id": 679,
+    "ok": true,
+    "url": "https://www.tiktok.com/@zachking/video/6768504823336815877",
+    "domain": "tiktok.com",
+    "type": "TIKTOK_VIDEO",
+    "status": 200,
+    "updatedAt": "2024-12-16T15:34:38.661Z",
+    "size": 468833,
+    "redirected": false,
+    "title": "Zach King (@zachking)",
+    "description": "They rejected my application to Hogwarts but I still found a way to be a wizard. 🧹#illusion #magic #harrypotter",
+    "icon": {
+        "url": "https://cdn.peekalink.io/ll2rf6emflby15bim0x0n1we/1284/favicon.png",
+        "width": 152,
+        "height": 152,
+        "backgroundColor": "#FFFFFF"
+    },
+    "image": {
+        "thumbnail": {
+            "width": 127,
+            "height": 240,
+            "url": "https://cdn.peekalink.io/ezmzm6ro2zj93ewo4wjjbuh3/1419/08bdf3f0d95b47cb8ea7ec7c85b6921a_1575915341_thumbnail.jpeg"
+        },
+        "medium": {
+            "width": 254,
+            "height": 480,
+            "url": "https://cdn.peekalink.io/ezmzm6ro2zj93ewo4wjjbuh3/1419/08bdf3f0d95b47cb8ea7ec7c85b6921a_1575915341_medium.jpeg"
+        },
+        "large": {
+            "width": 507,
+            "height": 960,
+            "url": "https://cdn.peekalink.io/ezmzm6ro2zj93ewo4wjjbuh3/1419/08bdf3f0d95b47cb8ea7ec7c85b6921a_1575915341_large.jpeg"
+        },
+        "original": {
+            "width": 676,
+            "height": 1280,
+            "url": "https://cdn.peekalink.io/ezmzm6ro2zj93ewo4wjjbuh3/1419/08bdf3f0d95b47cb8ea7ec7c85b6921a_1575915341_original.jpeg"
+        }
+    },
+    "tiktokVideo": {
+        "id": 6,
+        "publishedAt": "2019-12-09T18:15:37.000Z",
+        "likesCount": 25400000,
+        "commentsCount": 694300,
+        "playsCount": 1994967296,
+        "sharesCount": 1100000,
+        "text": "They rejected my application to Hogwarts but I still found a way to be a wizard. 🧹#illusion #magic #harrypotter",
+        "user": {
+            "id": 22,
+            "username": "zachking",
+            "verified": true,
+            "name": "Zach King",
+            "bio": "Bringing a little more wonder into the world, 15 seconds at a time",
+            "visibility": "PUBLIC",
+            "avatar": {
+                "thumbnail": {
+                    "width": 240,
+                    "height": 240,
+                    "url": "https://cdn.peekalink.io/kiv9yqtgicb1zojc3x069jnj/1418/smgf5f369c884044a8df770614bbfd64717_thumbnail.jpeg"
+                },
+                "medium": {
+                    "width": 400,
+                    "height": 400,
+                    "url": "https://cdn.peekalink.io/kiv9yqtgicb1zojc3x069jnj/1418/smgf5f369c884044a8df770614bbfd64717_medium.jpeg"
+                },
+                "large": {
+                    "width": 400,
+                    "height": 400,
+                    "url": "https://cdn.peekalink.io/kiv9yqtgicb1zojc3x069jnj/1418/smgf5f369c884044a8df770614bbfd64717_large.jpeg"
+                },
+                "original": {
+                    "width": 400,
+                    "height": 400,
+                    "url": "https://cdn.peekalink.io/kiv9yqtgicb1zojc3x069jnj/1418/smgf5f369c884044a8df770614bbfd64717_original.jpeg"
+                }
+            }
+        },
+        "media": [
+            {
+                "width": 676,
+                "height": 1280,
+                "size": 102353,
+                "format": "jpeg",
+                "hasAlphaChannel": false,
+                "thumbnail": {
+                    "width": 127,
+                    "height": 240,
+                    "url": "https://cdn.peekalink.io/ezmzm6ro2zj93ewo4wjjbuh3/1419/08bdf3f0d95b47cb8ea7ec7c85b6921a_1575915341_thumbnail.jpeg"
+                },
+                "medium": {
+                    "width": 254,
+                    "height": 480,
+                    "url": "https://cdn.peekalink.io/ezmzm6ro2zj93ewo4wjjbuh3/1419/08bdf3f0d95b47cb8ea7ec7c85b6921a_1575915341_medium.jpeg"
+                },
+                "large": {
+                    "width": 507,
+                    "height": 960,
+                    "url": "https://cdn.peekalink.io/ezmzm6ro2zj93ewo4wjjbuh3/1419/08bdf3f0d95b47cb8ea7ec7c85b6921a_1575915341_large.jpeg"
+                },
+                "original": {
+                    "width": 676,
+                    "height": 1280,
+                    "url": "https://cdn.peekalink.io/ezmzm6ro2zj93ewo4wjjbuh3/1419/08bdf3f0d95b47cb8ea7ec7c85b6921a_1575915341_original.jpeg"
+                }
+            }
+        ]
+    },
+    "requestId": "cm4r74w7h0001dh3n8prjsyrq"
+}
+```
+
+## Special Notes
+
+- **Fallback Strategies:** If certain metadata (like the caption or avatar) is missing, Peekalink makes best-effort inferences to maintain a useful preview.
+- **User & Engagement Data:** Leverage metrics like playsCount, likesCount, and sharesCount to highlight popularity and trending content.
+- **Media Variation:** With media arrays that include both images and videos, you can choose the best format for your layout or add interactive previews.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

@@ -1,0 +1,87 @@
+---
+title: Audio
+description: "Details for the AUDIO link type"
+position: 9
+category: Supported Formats
+icon: 'music'
+---
+
+**Type Value:** `AUDIO`  
+**Status:** PRODUCTION
+
+An `AUDIO` link type represents a direct audio file accessible via a URL. In addition to the baseline preview fields (`title`, `description`, `image`), `AUDIO` links offer specialized metadata—such as track duration, format, bitrate, and optional tags like artist, album, and waveform data. This makes it easy to present listeners with rich audio details, improving discoverability and user engagement.
+
+## What It Includes
+
+When `type` is `AUDIO`, the response includes an `audio` object with fields like:
+
+- **duration:** Total length of the audio in seconds.
+- **creationDate:** When the audio file was created.
+- **format:** The container/format (e.g., `mp3`, `wav`).
+- **title, artist, album:** If available, these fields help provide context, e.g., track listings, podcast episode titles, or album-based navigation.
+- **size:** File size in bytes.
+- **bitRate, audioCodec, sampleRate, channels:** Technical details useful for quality assessment, compatibility checks, or showing advanced stats to users.
+- **waveform:** An array of normalized amplitude values, enabling waveform visualizations in your UI.
+- **albumArtwork:** Responsive images representing the album cover or related imagery for a richer browsing experience.
+
+With this data, you can easily display album covers, show track durations, generate waveforms, or filter by bitrates—enhancing the overall audio experience.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://example.com/audio/podcast_episode_1.mp3"}'
+```
+
+## Example Response
+
+```json
+{
+    "id": 417,
+    "ok": true,
+    "url": "https://example.com/audio/podcast_episode_1.mp3",
+    "domain": "example.com",
+    "type": "AUDIO",
+    "status": 200,
+    "updatedAt": "2024-11-22T10:59:46.292Z",
+    "redirected": false,
+    "title": "podcast_episode_1.mp3",
+    "description": "1:00 · 2.52 MB · MP3",
+    "audio": {
+        "duration": 60,
+        "creationDate": "2024-11-22T10:59:49.070Z",
+        "size": 2646044,
+        "bitRate": 353,
+        "audioCodec": "pcm_s16le",
+        "format": "wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "waveform": [
+            0,
+            0,
+            0,
+            0,
+            -34.93,
+            -37.07,
+            -36.64,
+            -50.78,
+            -51.74,
+            -54.03,
+            -53.61,
+        ]
+    },
+    "requestId": "cm4r44vca0001vswv1e4fc5id"
+}
+```
+
+## Special Notes
+
+- **Metadata-Driven Experiences:** Title, artist, and album fields let you present audio files as songs, episodes, or audio clips with meaningful context rather than just raw files.
+- **Visual Enhancements:** Use waveform data to create visual indicators of volume/intensity over time, or show album artwork for brand recognition.
+- **Quality Indicators:** Bitrate and sampleRate let you surface quality metrics or adaptively choose which files to offer based on user preferences or bandwidth.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).

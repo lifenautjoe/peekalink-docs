@@ -1,71 +1,49 @@
 ---
 title: Introduction
-description: 'Welcome to the home of your new documentation'
+description: "An introduction to Peekalink"
+position: 1
+category: ""
+icon: 'link'
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
+## Overview
 
-## Setting up
+**Peekalink is a powerful Link Preview API that provides rich, reliable, and up-to-date metadata for virtually any URL.**
 
-The first step to world-class documentation is setting up your editing environments.
+Instead of implementing custom scraping, parsing, and caching logic, developers can integrate Peekalink to streamline the generation of enhanced link previews—complete with titles, descriptions, images, media details, and platform-specific data.
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+## Why Peekalink?
 
-## Make it yours
+Traditional link previews involve complex, error-prone processes:
 
-Update your docs to your brand and add valuable content for the best user conversion.
+- **Constantly changing content:** Websites frequently update their layouts, metadata, and media assets.
+- **Multiple formats:** Links can point to HTML pages, PDFs, documents, images, audio, video, or social media profiles—each requiring specialized handling.
+- **Performance and scalability:** Supporting real-time previews at scale demands significant infrastructure and ongoing maintenance.
 
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+**Peekalink abstracts away these complexities.**
+
+With a single API request, you can retrieve structured, normalized metadata for any supported link type. This allows you to deliver a polished user experience, reduce time-to-market, and focus on core product features rather than low-level plumbing.
+
+## Key Capabilities
+
+- **Multi-Format Support:** Fetch previews for web pages, documents, images, audio, video, and social links.
+- **Dynamic Content Handling:** Our engine uses real browsers, AI-driven semantic analysis, and fallback strategies to reliably extract meaningful metadata—even when standard tags are missing.
+- **Global CDN & Smart Caching:** Benefit from fast, globally distributed responses. After the first fetch, repeated requests are served instantly, with automatic background updates keeping previews fresh.
+- **Platform-Specific Enhancements:** Enrich previews with details like play counts, follower counts, and product data for services like YouTube, Twitter (X), Reddit, Amazon, and more.
+- **Robust Infrastructure:** Peekalink is designed for scale, offering high availability, real-time monitoring, and a proven track record of reliable performance.
+
+## Who Uses Peekalink?
+
+Developers from social networks, messaging platforms, AI assistants, and content aggregation tools rely on Peekalink to provide rich, context-aware previews.
+
+**Whether you’re building a community forum, an analytics dashboard, or an AI-driven content explorer, Peekalink helps surface engaging metadata with minimal effort.**
+
+## Get Started
+
+1. **Get your API Key:** Sign in to the [Peekalink Dashboard](https://www.peekalink.io/app/dashboard) and generate your API credentials.
+2. **Make Your First Request:** Follow our [Quickstart Guide](/docs/getting-started/quickstart) to see how simple it is to fetch a preview.
+3. **Explore the Documentation:** Review the [API Reference](/docs/api-reference) and integration guides to tailor Peekalink to your specific use case.
+
+By integrating Peekalink, you gain a scalable, future-proof solution for link previews—no custom scrapers, no patchwork code, no headaches.
+
+**Reliable previews, instantly.**

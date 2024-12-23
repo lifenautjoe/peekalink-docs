@@ -1,0 +1,127 @@
+---
+title: TikTok User 
+description: "Details for the TIKTOK_USER link type"
+position: 17
+category: Supported Formats
+icon: 'tiktok'
+---
+
+**Type Value:** `TIKTOK_USER`  
+**Status:** PRODUCTION
+
+A `TIKTOK_USER` link type represents a TikTok creator’s profile. Along with the common preview attributes (`title`, `description`, `image`), `TIKTOK_USER` links provide enriched user information—like follower and like counts, display names, and verification status—helping you showcase creator profiles with greater depth.
+
+## What It Includes
+
+When `type` is `TIKTOK_USER`, the response includes a `tiktokUser` object with fields such as:
+
+- **username & name:** The user’s handle and display name.
+- **avatar:** Responsive images for the user’s profile picture.
+- **bio:** A short biography describing the creator’s background or style.
+- **followersCount, followingCount, likesCount:** Metrics that highlight the creator’s popularity and engagement.
+- **visibility:** Indicates if the account is `PUBLIC` or `PRIVATE`.
+- **verified:** Whether the creator’s profile is verified by TikTok.
+- **url:** Direct link to the user’s TikTok profile.
+
+By tapping into these attributes, you can give users a clear sense of a creator’s scale, authenticity, and content focus.
+
+## Example Request
+
+```bash
+curl -X POST "https://api.peekalink.io/" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"link": "https://www.tiktok.com/@khaby.lame"}'
+```
+
+## Example Response
+
+```json
+{
+    "id": 489,
+    "ok": true,
+    "url": "https://www.tiktok.com/@khaby.lame",
+    "domain": "tiktok.com",
+    "type": "TIKTOK_USER",
+    "status": 200,
+    "updatedAt": "2024-12-16T15:33:14.698Z",
+    "size": 563813,
+    "redirected": false,
+    "title": "Khabane lame (@khaby)",
+    "description": "If you want to laugh you are in the right place😎",
+    "icon": {
+        "url": "https://cdn.peekalink.io/ll2rf6emflby15bim0x0n1we/1284/favicon.png",
+        "width": 152,
+        "height": 152,
+        "backgroundColor": "#FFFFFF"
+    },
+    "image": {
+        "thumbnail": {
+            "width": 240,
+            "height": 240,
+            "url": "https://cdn.peekalink.io/xpdvs8tfe5q4zdwc9n1xife1/1416/e755d298d36b3175a2ca87d603b5dc2d~c5_720x720_thumbnail.jpeg"
+        },
+        "medium": {
+            "width": 404,
+            "height": 404,
+            "url": "https://cdn.peekalink.io/xpdvs8tfe5q4zdwc9n1xife1/1416/e755d298d36b3175a2ca87d603b5dc2d~c5_720x720_medium.jpeg"
+        },
+        "large": {
+            "width": 404,
+            "height": 404,
+            "url": "https://cdn.peekalink.io/xpdvs8tfe5q4zdwc9n1xife1/1416/e755d298d36b3175a2ca87d603b5dc2d~c5_720x720_large.jpeg"
+        },
+        "original": {
+            "width": 404,
+            "height": 404,
+            "url": "https://cdn.peekalink.io/xpdvs8tfe5q4zdwc9n1xife1/1416/e755d298d36b3175a2ca87d603b5dc2d~c5_720x720_original.jpeg"
+        }
+    },
+    "tiktokUser": {
+        "id": 20,
+        "username": "khaby",
+        "verified": true,
+        "name": "Khabane lame",
+        "bio": "If you want to laugh you are in the right place😎",
+        "url": "https://bit.ly/3Zn5cDf",
+        "followersCount": 162400000,
+        "followingCount": 79,
+        "likesCount": 2500000000,
+        "visibility": "PUBLIC",
+        "avatar": {
+            "thumbnail": {
+                "width": 240,
+                "height": 240,
+                "url": "https://cdn.peekalink.io/xpdvs8tfe5q4zdwc9n1xife1/1416/e755d298d36b3175a2ca87d603b5dc2d~c5_720x720_thumbnail.jpeg"
+            },
+            "medium": {
+                "width": 404,
+                "height": 404,
+                "url": "https://cdn.peekalink.io/xpdvs8tfe5q4zdwc9n1xife1/1416/e755d298d36b3175a2ca87d603b5dc2d~c5_720x720_medium.jpeg"
+            },
+            "large": {
+                "width": 404,
+                "height": 404,
+                "url": "https://cdn.peekalink.io/xpdvs8tfe5q4zdwc9n1xife1/1416/e755d298d36b3175a2ca87d603b5dc2d~c5_720x720_large.jpeg"
+            },
+            "original": {
+                "width": 404,
+                "height": 404,
+                "url": "https://cdn.peekalink.io/xpdvs8tfe5q4zdwc9n1xife1/1416/e755d298d36b3175a2ca87d603b5dc2d~c5_720x720_original.jpeg"
+            }
+        }
+    },
+    "requestId": "cm4r72o1q000710s1iightt5y"
+}
+```
+
+
+## Special Notes
+
+- **Fallback Strategies:** If certain metadata fields are missing, Peekalink infers defaults to maintain a coherent preview.
+- **User Metrics:** Leverage follower counts, like counts, and verification status to highlight established creators.
+- **Public vs. Private:** Adjust how you present or link to user profiles based on the visibility field.
+
+## Schema reference
+
+For a full technical breakdown of all fields and validation rules, including detailed JSON schemas, please refer to the [API Reference](/api-reference/).
