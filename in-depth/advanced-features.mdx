@@ -1,0 +1,76 @@
+---
+title: Advanced Features
+description: "Explore the sophisticated features that make Peekalink stand out in the link preview landscape"
+position: 5
+category: "In-Depth"
+icon: 'rocket'
+---
+
+## Overview
+
+Peekalink offers **more than just basic link previews**. We’ve built a suite of **advanced capabilities** to handle the wide variety of content types and challenges that modern applications demand. From AI-driven metadata extraction to complex handling of redirects and dynamic content, our platform streamlines the process of fetching **accurate, complete, and context-rich** previews.
+
+## AI Fallbacks
+
+One of the primary obstacles in generating reliable previews is the **lack of standardized metadata** across websites. Peekalink tackles this issue with:
+
+- **AI-Powered Extraction:** Our engine uses machine learning to parse structured and unstructured content, pulling titles, descriptions, and images even when traditional Open Graph or meta tags are absent.  
+- **Semantic Analysis:** By examining on-page text and context, we can discern the most relevant summary and imagery—minimizing missing or low-quality previews.  
+- **Continuous Model Updates:** Our AI systems are updated regularly, improving detection and classification for emerging content types and evolving site designs.
+
+These fallback strategies ensure that your application always receives **meaningful metadata**, regardless of how well (or poorly) a site is configured for sharing.
+
+## Platform Compliance
+
+Different platforms (e.g., YouTube, X/Twitter, Instagram) each have their own **API policies** and **metadata protocols**. Peekalink stays ahead of these complexities:
+
+- **Compliance Monitoring:** We continuously track changes in social media platforms and e-commerce websites, ensuring our extraction methods comply with their terms.  
+- **Dedicated Integrations:** Each platform integration (YouTube, Amazon, Reddit, and more) is carefully configured to fetch all available metadata without violating rate limits or TOS.  
+- **Automatic Failover:** If a particular integration endpoint is temporarily unavailable, Peekalink gracefully falls back to best-effort scraping, maintaining a consistent user experience.
+
+By maintaining these platform-specific nuances, we save you from **error-prone** or **outdated** do-it-yourself integrations.
+
+## Redirects & Dynamic Content
+
+Modern websites often involve **multiple redirects**, JavaScript-heavy pages, and user-generated media. Our infrastructure addresses these complexities:
+
+1. **Redirect Trace:** We follow multiple 3xx redirects (301, 302, etc.) automatically to capture final destinations—no manual intervention required.  
+2. **DOM Rendering:** Our headless browser cluster processes JavaScript, tracks AJAX calls, and extracts dynamically loaded content.  
+3. **Lazy-Loaded Media:** Even images that appear late in the load cycle are discovered and evaluated, ensuring your previews reflect the site’s actual visuals.
+
+By handling these steps behind the scenes, Peekalink ensures you get a **consistent** and **complete** snapshot of every link.
+
+## Smart Caching
+
+Beyond raw extraction, Peekalink implements **sophisticated caching** to deliver near-instant previews:
+
+- **Content-Based Validation:** We use ETags, file hashes, and other signals to detect real content changes, preventing unnecessary re-scrapes.  
+- **Global Delivery:** Our CDN edge servers store frequently requested metadata, speeding up response times worldwide.  
+- **Cache Hierarchies:** Caching happens at multiple layers—browser cluster, database, and gateway—ensuring most requests are served from optimized data, not from scratch.
+
+This approach minimizes **load**, boosts **performance**, and keeps your previews **up-to-date** without incurring excessive API calls.
+
+## Additional Capabilities
+
+Besides AI, compliance, redirect handling, and caching, Peekalink offers a range of other advanced tools, such as:
+
+- **Rate Limiting & Throttling**: Protect your application from spamming or abuse by controlling request flow.  
+- **Metadata Normalization**: All extracted data is returned in standardized fields for easy parsing across varied platforms.  
+- **Analytics & Monitoring**: Gain insights into usage patterns, error rates, and request breakdowns in real-time.  
+- **Custom Headers & User Agents**: Fine-tune requests to handle sites that require specific agent strings, language settings, or header-based authentication.
+
+## Why It Matters
+
+**Advanced capabilities** are crucial when you’re building an application that **relies** on rich content from external links. By leveraging Peekalink’s feature set, you can:
+
+- **Improve User Engagement:** Provide visuals and contextual data that entices users to click, watch, or share.  
+- **Reduce Development Overhead:** Eliminate the need for custom scraping or manual platform integrations.  
+- **Ensure Longevity:** Rely on our evergreen system to adapt to changes in web standards, platform TOS, and new technologies.
+
+## Next Steps
+
+- **Review Specific Link Types:** If you’re interested in in-depth platform details (YouTube, X, Reddit, etc.), check out our [Overview](/docs/supported-link-types/overview) to see how Peekalink handles each.  
+- **Get Hands-On:** Visit our [Quickstart Guide](/docs/getting-started/quickstart) to fetch your first advanced preview.  
+- **Upgrade Your Plan:** Take full advantage of advanced features like AI fallbacks and platform compliance by choosing a plan with enough monthly or hourly capacity. [View Pricing](http://peekalink.io/pricing).
+
+By integrating Peekalink’s advanced feature set, you’ll deliver **rich, reliable previews** for every link your users share—without the complexity of building and maintaining it all yourself.

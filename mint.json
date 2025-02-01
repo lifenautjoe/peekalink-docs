@@ -60,6 +60,13 @@
       ]
     },
     {
+      "group": "In-Depth",
+      "pages": [
+        "in-depth/scalability",
+        "in-depth/advanced-features"
+      ]
+    },
+    {
       "group": "Supported Link Types",
       "pages": [
         "supported-link-types/overview",

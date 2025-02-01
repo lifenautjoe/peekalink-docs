@@ -1,0 +1,75 @@
+---
+title: Scalability
+description: "How Peekalink effortlessly handles massive throughput with a robust, distributed architecture"
+position: 4
+category: "In-Depth"
+icon: 'server'
+---
+
+## Overview
+
+Building a robust, high-availability Link Preview API at scale requires more than just a few servers and a simple caching layer. **Peekalink** is engineered from the ground up to handle unpredictable traffic spikes and ever-growing data demands. This page dives into how our scalable architecture ensures fast response times and reliable uptime for every request.
+
+## Load-Balanced Gateway
+
+All incoming requests first pass through our **load-balanced gateway**, which distributes traffic across multiple nodes. This architecture offers:
+
+- **Fault Tolerance:** If one node experiences downtime, traffic seamlessly reroutes to healthy nodes—preventing service interruptions.  
+- **Horizontal Scalability:** As demand grows, we can quickly spin up more gateway instances and add them to the load balancer pool, maintaining consistent performance.
+
+By employing smart routing algorithms and monitoring, we ensure your link preview requests are always served by the fastest and most available node.
+
+## Database Clusters
+
+Underpinning every preview request is the need for **persistent, reliable data** about URLs and their metadata. We leverage **clustered databases** to handle massive volumes of read and write operations:
+
+- **Sharded & Replicated:** Data is partitioned across multiple nodes to balance load and replicated to ensure no single node failure can cause data loss.  
+- **Fast Reads & Writes:** Our cluster optimizes query execution and indexing strategies, sustaining high throughput while keeping latency low.  
+- **Seamless Scaling:** As preview requests increase, we can add more database nodes without reconfiguring or refactoring the entire system.
+
+This robust data storage layer serves as the backbone for quick lookups, analytics, and caching decisions.
+
+## Browser Clusters
+
+To capture accurate metadata—especially from dynamic content—Peekalink uses **actual browser instances** in a headless environment. We maintain a **cluster of these headless browsers** for tasks like:
+
+- **JavaScript Rendering:** Modern websites rely heavily on client-side JS. Our browser cluster ensures no content is missed by naive HTML parsing.  
+- **Media Extraction:** Videos, images, audio streams, and complex social widgets all require a fully rendered DOM to fetch metadata accurately.  
+- **Load Distribution:** Rendering tasks are spread across the cluster to avoid bottlenecks. If demand peaks, additional browser nodes can be provisioned automatically.
+
+By combining real browsers with AI-driven fallback strategies, we reliably extract metadata even from sites that actively resist scraping.
+
+## Smart Caching
+
+Caching is critical to achieving sub-second responses and lowering infrastructure costs. Peekalink employs **advanced caching strategies** that respect [HTTP standards](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching), file hashes, and **byte-level comparisons**:
+
+- **Content-Based Invalidation:** We only invalidate cache entries when content truly changes, using file hashing and ETag validations to detect even subtle modifications.  
+- **Global CDN Integration:** Cached metadata and rendered previews are pushed to our global CDN for near-instant delivery, regardless of your users’ locations.  
+- **Layered Cache Hierarchy:** We maintain multiple cache tiers—browser, gateway, and database—to minimize redundant fetches and keep latencies low.
+
+These layers work together to ensure most requests are served from cache, freeing up resources for fresh links and demanding use cases.
+
+## Why Pay for Peekalink’s Infrastructure?
+
+The moment you try to build and maintain a custom link preview service in-house, you’re signing up for a **significant engineering investment**:
+
+- **Ongoing Maintenance:** Websites change layouts, security measures evolve, and new media formats emerge—requiring constant updates to scrapers and parsers.  
+- **Scaling Complexity:** Handling traffic spikes and ensuring high availability demands specialized knowledge of load balancing, distributed systems, and caching layers.  
+- **Performance Tuning:** Achieving sub-second performance at scale requires monitoring, profiling, and fine-tuning a variety of components.
+
+By choosing Peekalink, you benefit from an **enterprise-grade infrastructure**—load-balanced gateways, database clusters, headless browser clusters, and sophisticated caching—without the headaches and overhead of building it all yourself.
+
+## Key Takeaways
+
+- **Load-Balanced Gateway** ensures fault tolerance and horizontal scalability.  
+- **Database Clusters** offer sharded, replicated storage for fast, reliable data access.  
+- **Browser Clusters** handle complex, dynamic pages at scale, capturing complete metadata.  
+- **Smart Caching** accelerates response times and respects content changes with precise invalidation.  
+- **Comprehensive Infrastructure** saves you the cost and complexity of building and maintaining your own solution.
+
+Peekalink’s infrastructure is crafted to handle the toughest link preview challenges. From persistent scaling concerns to real-time browser rendering, our platform is ready to serve any volume of requests—so you can focus on delivering great experiences to your users.
+
+---
+
+**Ready to see how Peekalink’s scalable architecture can power your application?**  
+[Get Your API Key](https://www.peekalink.io/app/dashboard) or [View Documentation](/docs/api-reference) to get started.
