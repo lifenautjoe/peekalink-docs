@@ -91,6 +91,13 @@
         "supported-link-types/etsy-product",
         "supported-link-types/github-repository"
       ]
+    },
+    {
+      "group": "Legal",
+      "pages": [
+        "legal/privacy",
+        "legal/terms"
+      ]
     }
   ],
   "footerSocials": {
